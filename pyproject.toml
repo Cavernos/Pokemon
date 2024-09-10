@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Pokemon_RPG"
+description = "Projet Technique Spécialisé en Informatique qui reproduit un jeu dans le style Pokemon"
+readme={file="docs/README.md", content-type="text/markdown"}
+license={file="docs/LICENSE"}
+dependencies = ["pygame>=2.6.0"]
+requires-python = ">= 3.12.0"
+dynamic = ["version"]
+authors = [
+    {name="Nicolas CLEMENT", email="nicolas.clement@eleve.isep.fr"},
+    {name="Mohamed Nahil CHINE", email="mohamed.chine@eleve.isep.fr"},
+    {name="Aurélia HUISSE-DALBOUSSIERE", email="aurelia.huisse-dalboussiere@eleve.isep.fr"},
+    {name="Sirine NADIFI", email="sirine.nadifi@eleve.isep.fr"},
+    {name="Louis DUBOIS", email="louis.dubois@eleve.isep.fr"}
+]
+
+
+[project.urls]
+Repository = "https://github.com/Cavernos/Pokemon.git"
+Changelog = "https://github.com/Cavernos/Pokemon/tree/main/docs/CHANGELOG.md"
+Issues = "https://github.com/Cavernos/Pokemon/issues"
+
+
+[project.gui-scripts]
+pokemon-gui = "app:main"
+
+
