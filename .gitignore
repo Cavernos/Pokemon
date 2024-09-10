@@ -2,3 +2,4 @@
 venv/
 build/
 Pokemon_RPG.egg-info/
+__pycache__/

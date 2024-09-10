@@ -18,7 +18,11 @@ Folders and files names in snake_case.
         ∟ /app
             ∟ /assets
                 ∟ /images
-            ∟ /modules
+            ∟ /module
+                ∟ /views
+                ∟ /actions
+                module.py
+                config.py
             ∟ main.py
             
 ```
