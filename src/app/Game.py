@@ -18,17 +18,16 @@ class Game:
 
     def run(self, event: Event):
         for module in self.modules:
-            self.get_container().get(module)
+            self.get_container().get(module.__name__)
         return self.handle(event)
 
-    def get_container(self) -> Container:
-        container = Container()
-        container.add_definitions(self.definition)
+    def get_container(self) -> Type[Container]:
+        Container.add_definitions(self.definition)
         for module in self.modules:
             if module.definitions:
-                container.add_definitions(module.definitions)
+                Container.add_definitions(module.definitions)
 
-        return container
+        return Container
 
     def handle(self, event: Event):
         pass

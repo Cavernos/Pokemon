@@ -1,7 +1,9 @@
+import json
 import os.path
 
 from app.module.entity import Animal
-from lib import Module
+from lib import Module, Container
+from lib.loaders import LoaderInterface, FileLoader
 
 
 class ModuleClass(Module):
@@ -9,4 +11,7 @@ class ModuleClass(Module):
 
     def __init__(self):
         super().__init__()
-        animal = Animal({})
+        loader: FileLoader = Container.get(LoaderInterface.__name__)
+        with open(loader.json_file_path[os.path.dirname(os.path.abspath(__file__))], "r") as file:
+            animal = Animal(json.loads(file.read()))
+        print(animal.name)

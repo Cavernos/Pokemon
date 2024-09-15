@@ -1,4 +1,4 @@
 from app.module import ModuleClass
 config = {
-    ModuleClass: ModuleClass()
+    ModuleClass.__name__: ModuleClass()
 }
