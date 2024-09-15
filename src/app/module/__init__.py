@@ -1,0 +1,1 @@
+from app.module.module import ModuleClass
