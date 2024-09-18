@@ -25,7 +25,21 @@ Changelog = "https://github.com/Cavernos/Pokemon/tree/main/docs/CHANGELOG.md"
 Issues = "https://github.com/Cavernos/Pokemon/issues"
 
 
+[project.optional-dependencies]
+test = [
+    "pytest-cov >=3.8.8",
+]
+
 [project.gui-scripts]
 pokemon-gui = "app:main"
+
+[tool.pytest.ini_options]
+minversion = "8.3.3"
+testpaths = [
+    "tests"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src", "tests" = "tests"}
 
 

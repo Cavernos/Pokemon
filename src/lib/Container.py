@@ -14,8 +14,11 @@ class Container:
         return "Error"
 
     @classmethod
-    def add_definitions(cls, definition):
-        module_config = SourceFileLoader("config", definition).load_module().config
+    def add_definitions(cls, definition: str|dict):
+        if isinstance(definition, str):
+            module_config = SourceFileLoader("config", definition).load_module().config
+        else:
+            module_config = definition
         cls.config.update(module_config)
 
 

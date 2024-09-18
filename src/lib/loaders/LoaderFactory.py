@@ -2,7 +2,7 @@ import glob
 import os
 
 import app
-from lib.loaders import FileLoader, DatabaseLoader, LoaderInterface
+from src.lib.loaders import FileLoader, DatabaseLoader, LoaderInterface
 
 
 class LoaderFactory:
