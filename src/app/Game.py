@@ -4,10 +4,15 @@ import tomllib
 from pathlib import Path
 from typing import Type
 
+import pygame
 import pygame.time
 from pygame.event import Event
 
+from app.module.views import HomeView
+# from app.module.views import HomeView
 from lib import Container, Module
+from lib.events import EventListener
+from lib.views import ViewHandler
 
 
 class Window:
@@ -23,12 +28,14 @@ class Window:
         pygame.display.set_caption(self.title)
         pygame.display.set_icon(pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "img", "icon.png")))
         self.running = True
+        view_handler = Container.get(ViewHandler.__name__)
+        view_handler.set_view(HomeView)
         while self.running:
+            view_handler.update()
             for e in pygame.event.get():
-                if e.type == pygame.QUIT:
-                    self.running = False
-                    self.quit()
+                EventListener.handle(e)
 
+    @EventListener.add_event_listener(pygame.QUIT)
     def quit(self):
         pygame.quit()
         sys.exit(0)
