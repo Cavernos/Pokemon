@@ -28,7 +28,8 @@ class Window:
         pygame.display.set_icon(pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "img", "icon.png")))
         self.running = True
         view_handler = Container.get(ViewHandler.__name__)
-        view_handler.set_view(HomeView)
+        if HomeView.__name__ in Container.get("views").keys():
+            view_handler.set_view(Container.get("views")[HomeView.__name__])
         while self.running:
             view_handler.update()
             for e in pygame.event.get():
@@ -53,13 +54,13 @@ class Game(Window):
         return self
 
     def run(self):
+        Container.add_definitions(self.definition)
         if self.modules:
             for module in self.modules:
                 self.get_container().get(module.__name__)
         super().run()
 
     def get_container(self) -> Type[Container]:
-        Container.add_definitions(self.definition)
         for module in self.modules:
             if module.definitions:
                 Container.add_definitions(module.definitions)

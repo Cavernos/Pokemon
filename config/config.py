@@ -12,7 +12,8 @@ config = {
     "APP": os.path.join(Path(os.path.dirname(os.path.abspath(__file__))).parent, "src", "app\\"),
     LoaderInterface.__name__: factory(LoaderFactory()),
     ViewHandler.__name__: ViewHandler(),
-    EventListener.__name__: EventListener()
+    EventListener.__name__: EventListener(),
+    "views": {}
 }
 
 

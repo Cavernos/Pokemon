@@ -14,12 +14,11 @@ class EventListener:
         return inner
 
     @staticmethod
-    def add_event_listener(event_type, func):
+    def add_event_listener(event_type: int, func):
         EventListener.listeners[event_type].append(func)
 
     @staticmethod
     def remove_event_listener(event_type: int, handler):
-        print(handler)
         if handler in EventListener.listeners[event_type]:
             del EventListener.listeners[event_type]
 
