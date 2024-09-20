@@ -8,8 +8,7 @@ import pygame
 import pygame.time
 from pygame.event import Event
 
-from app.module.views import HomeView
-# from app.module.views import HomeView
+from app.MainMenuModule.views import HomeView
 from lib import Container, Module
 from lib.events import EventListener
 from lib.views import ViewHandler
@@ -22,7 +21,7 @@ class Window:
             self.title: str = tomllib.load(file)['project']['name']
         self.running = False
 
-    def run(self, event: Event):
+    def run(self):
         pygame.init()
         pygame.display.set_mode(self.size)
         pygame.display.set_caption(self.title)
@@ -35,8 +34,9 @@ class Window:
             for e in pygame.event.get():
                 EventListener.handle(e)
 
-    @EventListener.add_event_listener(pygame.QUIT)
-    def quit(self):
+    @staticmethod
+    @EventListener.on(pygame.QUIT)
+    def quit(event):
         pygame.quit()
         sys.exit(0)
 
@@ -52,19 +52,15 @@ class Game(Window):
         self.modules.append(module)
         return self
 
-    def run(self, event: Event):
-        for module in self.modules:
-            self.get_container().get(module.__name__)
-        super().run(event)
-        return self.handle(event)
+    def run(self):
+        if self.modules:
+            for module in self.modules:
+                self.get_container().get(module.__name__)
+        super().run()
 
     def get_container(self) -> Type[Container]:
         Container.add_definitions(self.definition)
         for module in self.modules:
             if module.definitions:
                 Container.add_definitions(module.definitions)
-
         return Container
-
-    def handle(self, event: Event):
-        pass

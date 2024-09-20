@@ -1,5 +1,5 @@
 .idea/
 venv/
 build/
-Pokemon_RPG.egg-info/
+*.egg-info/
 __pycache__/

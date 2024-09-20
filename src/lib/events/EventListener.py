@@ -8,13 +8,18 @@ class EventListener:
     listeners = defaultdict(list)
 
     @staticmethod
-    def add_event_listener(event_type: int):
+    def on(event_type: int):
         def inner(func):
-            EventListener.listeners[event_type].append(func)
+            EventListener.add_event_listener(event_type, func)
         return inner
 
     @staticmethod
-    def remove_event_listener(event_type: int, handler): 
+    def add_event_listener(event_type, func):
+        EventListener.listeners[event_type].append(func)
+
+    @staticmethod
+    def remove_event_listener(event_type: int, handler):
+        print(handler)
         if handler in EventListener.listeners[event_type]:
             del EventListener.listeners[event_type]
 
@@ -22,4 +27,3 @@ class EventListener:
     def handle(event: Event, selector=attrgetter('type')):
         for handler in EventListener.listeners[selector(event)]:
             handler(event)
-

@@ -11,10 +11,10 @@ class Container:
     def get(cls, item: str) -> object | str:
         if item in cls.config.keys():
             return cls.config[item]
-        return "Error"
+        raise Exception("Error")
 
     @classmethod
-    def add_definitions(cls, definition: str|dict):
+    def add_definitions(cls, definition: str | dict):
         if isinstance(definition, str):
             module_config = SourceFileLoader("config", definition).load_module().config
         else:
