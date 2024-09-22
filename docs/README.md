@@ -60,3 +60,6 @@ class Player():
     def __init__(self) -> None:
         pass
 ```
+
+# Other links
+[How to use lib](./LIB_DOC.md)

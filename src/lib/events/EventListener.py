@@ -23,6 +23,6 @@ class EventListener:
             del EventListener.listeners[event_type]
 
     @staticmethod
-    def handle(event: Event, selector=attrgetter('type')):
-        for handler in EventListener.listeners[selector(event)]:
+    def handle(event: Event):
+        for handler in EventListener.listeners[attrgetter('type')(event)]:
             handler(event)
