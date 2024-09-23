@@ -32,7 +32,7 @@ config = {
 This is an example of config. This is for the container to get instance wherever you want.
 
 After you write your config, you have to write your module to load all datas
-<br/> In ``MainMenuModuleAction`` you have:
+<br/> In ``MainMenuModule`` you have:
 ```python
 import os
 from app.MainMenuModule.actions import MainMenuModuleAction
@@ -46,7 +46,21 @@ class MainMenuModule(Module):
         MainMenuModuleActions()
 
 ```
-You can add also some params in MainMenuModuleActions. It's just an example.
+You can add also some params in MainMenuModuleActions instance. It's just an example.
+
+When you have written your module you had to create your actions for views like when I click on this button, I change view.
+For that, you had just to add an event listener to your event and write the callback like that:
+```python
+class MainMenuModuleActions:
+    def __init__(self):
+        EventListener.add_event_listener(pygame.KEYDOWN, self.on_key_press)
+    
+    def  on_key_press(self, event):
+        print(event.key)
+```
+So, when you press a key on your keyboard, the game interpret it and display in console which key was pressed.
+
+
 
 These are the principal things to add in your module. After you can append optional directories.
 
