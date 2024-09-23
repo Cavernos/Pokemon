@@ -1,7 +1,5 @@
 from abc import ABC
 
-import pygame.display
-
 from lib.views import View
 from lib.widgets import Button
 
@@ -9,9 +7,9 @@ from lib.widgets import Button
 class HomeView(View, ABC):
     def __init__(self, screen):
         super().__init__(screen)
-        self.button = Button(self.screen, 120, 60, 200, 200, "hello")
+        self.button = [Button(self.screen, 120, 60, 200, 200, "hello"), Button(self.screen, 400, 400, 200, 200, "hello2")]
 
     def update(self):
         self.group.draw(self.screen)
-        self.button.render()
-        pygame.display.update()
+        for button in self.button:
+            button.render()

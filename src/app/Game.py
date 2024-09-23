@@ -32,8 +32,9 @@ class Window:
             view_handler.set_view(Container.get("views")[HomeView.__name__])
         while self.running:
             view_handler.update()
-            for e in pygame.event.get():
-                EventListener.handle(e)
+            e = pygame.event.poll()
+            EventListener.handle(e)
+            pygame.display.flip()
 
     @staticmethod
     @EventListener.on(pygame.QUIT)

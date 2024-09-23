@@ -11,6 +11,7 @@ class EventListener:
     def on(event_type: int):
         def inner(func):
             EventListener.add_event_listener(event_type, func)
+
         return inner
 
     @staticmethod
