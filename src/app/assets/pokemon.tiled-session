@@ -11,10 +11,10 @@
     "fileStates": {
         "maps/home.tmx": {
             "scale": 0.75,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 296.66666666666663,
-                "y": 146.66666666666663
+                "x": 252,
+                "y": 342.66666666666663
             }
         },
         "maps/tileset/indoor.tsx": {
