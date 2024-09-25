@@ -1,3 +1,4 @@
+import logging
 from importlib.machinery import SourceFileLoader
 
 
@@ -11,8 +12,8 @@ class Container:
     def get(cls, item: str) -> object | str:
         if item in cls.config.keys():
             return cls.config[item]
-        raise Exception("Error")
-
+        logging.warning(f"Could not load {item}")
+        return None
     @classmethod
     def add_definitions(cls, definition: str | dict):
         if isinstance(definition, str):

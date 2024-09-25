@@ -35,11 +35,9 @@ pokemon-gui = "app:main"
 
 [tool.pytest.ini_options]
 minversion = "8.3.3"
+pythonpath = ['src']
 testpaths = [
     "tests"
 ]
-
-[tool.setuptools]
-package-dir = {"" = "src", "tests" = "tests"}
 
 

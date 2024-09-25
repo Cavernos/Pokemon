@@ -19,11 +19,9 @@ class Button:
         self.screen.blit(self.text, self.button)
 
     def on_hover(self, event):
-        if self.button.collidepoint(event.pos):
-            if not self.is_hover:
-                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-                self.is_hover = True
-        else:
-            if self.is_hover:
-                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
-                self.is_hover = False
+        if self.button.collidepoint(event.pos) and not self.is_hover:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            self.is_hover = True
+        if not self.button.collidepoint(event.pos) and self.is_hover:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+            self.is_hover = False

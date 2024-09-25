@@ -1,8 +1,8 @@
 import unittest
 
-from src.lib import Container
-from src.lib import Module
-from src.lib.loaders import FileLoader
+from lib import Container
+from lib import Module
+from lib.loaders import FileLoader
 
 
 class TestContainer(unittest.TestCase):
@@ -17,4 +17,7 @@ class TestContainer(unittest.TestCase):
     def test_get_with_class_name(self):
         Container.add_definitions({Module.__name__: FileLoader([])})
         self.assertIsInstance(Container.get(Module.__name__), FileLoader)
+
+    def test_get_with_another_key(self):
+        self.assertEqual(Container.get('test'), None)
         
