@@ -3,7 +3,7 @@ import os.path
 import sys
 import tomllib
 from pathlib import Path
-from typing import Type
+from typing import Type, Self
 
 import pygame
 import pygame.time
@@ -50,7 +50,7 @@ class Game(Window):
         self.definition = definition
         self.modules = []
 
-    def add_module(self, module: Type[Module]) -> object:
+    def add_module(self, module: Type[Module]) -> Self:
         self.modules.append(module)
         return self
 

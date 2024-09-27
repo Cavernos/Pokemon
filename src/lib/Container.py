@@ -26,7 +26,11 @@ class Container:
             module_config = SourceFileLoader("config", definition).load_module().config
         else:
             module_config = definition
-        cls.config.update(module_config)
+        for key, value in module_config.items():
+            if isinstance(value, dict):
+                if key in cls.config.keys():
+                    module_config[key] = {**module_config[key], **cls.config[key]}
+        cls.config = cls.config | module_config
 
     @classmethod
     def set(cls, key, value):

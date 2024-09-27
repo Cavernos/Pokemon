@@ -1,11 +1,10 @@
-import os
+import os.path
 
-from app.MainMenuModule.actions import MainMenuModuleAction
 from lib import Module
 
 
-class MainMenuModule(Module):
+class Settings(Module):
     definitions = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.py")
 
     def __init__(self):
-        MainMenuModuleAction()
+        ...
