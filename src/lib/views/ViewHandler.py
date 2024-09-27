@@ -7,7 +7,12 @@ class ViewHandler:
 
     def set_view(self, view):
         try:
-            self.curent_view = view(pygame.display.get_surface())
+            if pygame.display.get_init():
+                try:
+                    self.curent_view = view(pygame.display.get_surface())
+                except AttributeError as e:
+                    self.curent_view = None
+
         except NameError as e:
             return e
 

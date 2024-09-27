@@ -3,9 +3,9 @@ import pygame
 from lib.views import View
 
 
-class HomeView(View):
-    def __init__(self):
-        super().__init__()
+class HomView(View):
+    def __init__(self, screen):
+        super().__init__(screen)
         self.color = (255, 255, 255)
 
     def update(self):

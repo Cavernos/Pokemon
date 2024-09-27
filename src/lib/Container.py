@@ -1,5 +1,6 @@
 import logging
 from importlib.machinery import SourceFileLoader
+from typing import Any
 
 
 class Container:
@@ -9,11 +10,16 @@ class Container:
         self.config = Container.config
 
     @classmethod
-    def get(cls, item: str) -> object | str:
+    def get(cls, item: str) -> Any:
         if item in cls.config.keys():
             return cls.config[item]
+        for value in cls.config.values():
+            if isinstance(value, dict):
+                if item in value:
+                    return value[item]
         logging.warning(f"Could not load {item}")
         return None
+
     @classmethod
     def add_definitions(cls, definition: str | dict):
         if isinstance(definition, str):
@@ -21,6 +27,21 @@ class Container:
         else:
             module_config = definition
         cls.config.update(module_config)
+
+    @classmethod
+    def set(cls, key, value):
+        if not key in cls.config.keys():
+            cls.config[key] = value
+
+    @classmethod
+    def exists(cls, key):
+        if key in cls.config.keys():
+            return True
+        for value in cls.config.values():
+            if isinstance(value, dict):
+                if key in value:
+                    return True
+        return False
 
 
 def factory(factory: object) -> any:

@@ -2,12 +2,12 @@ import os
 from pathlib import Path
 
 from app import Game
-from app.MainMenuModule import MainMenuModule
+from app.module import ModuleClass
 
 
 def main() -> int:
     g = Game(os.path.join(Path(os.path.dirname(__file__)).parent.parent, "config", "config.py"))
-    g.add_module(MainMenuModule)
+    g.add_module(ModuleClass)
     g.run()
     return 0
 

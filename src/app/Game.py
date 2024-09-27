@@ -1,3 +1,4 @@
+import logging
 import os.path
 import sys
 import tomllib
@@ -28,12 +29,11 @@ class Window:
         pygame.display.set_icon(pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "img", "icon.png")))
         self.running = True
         view_handler = Container.get(ViewHandler.__name__)
-        if HomeView.__name__ in Container.get("views").keys():
-            view_handler.set_view(Container.get("views")[HomeView.__name__])
+        if Container.exists(HomeView.__name__):
+            view_handler.set_view(Container.get(HomeView.__name__))
         while self.running:
             view_handler.update()
-            e = pygame.event.poll()
-            EventListener.handle(e)
+            EventListener.handle(pygame.event.poll())
             pygame.display.flip()
 
     @staticmethod
@@ -59,6 +59,7 @@ class Game(Window):
         if self.modules:
             for module in self.modules:
                 self.get_container().get(module.__name__)
+        logging.basicConfig(handlers=[logging.StreamHandler(sys.stdout)], level=logging.DEBUG)
         super().run()
 
     def get_container(self) -> Type[Container]:
