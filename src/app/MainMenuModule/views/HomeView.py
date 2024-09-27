@@ -10,7 +10,6 @@ from lib.widgets import Button
 class HomeView(View, ABC):
     def __init__(self, screen):
         super().__init__(screen)
-        self.buttons = []
         for objs in self.tmx_data.objectgroups:
             for obj in objs:
                 if isinstance(locate(obj.type), Button.__class__):

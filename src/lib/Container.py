@@ -17,7 +17,7 @@ class Container:
             if isinstance(value, dict):
                 if item in value:
                     return value[item]
-        logging.warning(f"Could not load {item}")
+        logging.getLogger(__name__).warning(f"Could not load {item}")
         return None
 
     @classmethod

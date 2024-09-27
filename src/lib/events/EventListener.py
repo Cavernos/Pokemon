@@ -19,7 +19,10 @@ class EventListener:
         EventListener.listeners[event_type].append(func)
 
     @staticmethod
-    def remove_event_listener(event_type: int, handler):
+    def remove_event_listener(event_type: int, handler=None):
+        if event_type in EventListener.listeners and handler is None:
+            del EventListener.listeners[event_type]
+            return
         if handler in EventListener.listeners[event_type]:
             del EventListener.listeners[event_type]
 
