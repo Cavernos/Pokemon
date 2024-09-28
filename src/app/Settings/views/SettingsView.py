@@ -8,4 +8,4 @@ class SettingsView(View, ABC):
         super().__init__(screen)
 
     def update(self):
-        self.screen.fill((255, 0, 0))
+        super().update()

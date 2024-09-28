@@ -25,7 +25,11 @@ class View:
         self.buttons = []
 
     @abstractmethod
-    def update(self): ...
+    def update(self):
+        if self.tmx_data is None:
+            self.screen.fill((0, 0, 0))
+        else:
+            self.group.draw(self.screen)
 
     def __del__(self):
         for button in self.buttons:

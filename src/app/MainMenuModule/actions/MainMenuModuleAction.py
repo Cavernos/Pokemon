@@ -1,20 +1,15 @@
-import pygame
-
 from app.Settings.views import SettingsView
 from lib import Container
-from lib.events import EventListener
 from lib.views import ViewHandler
 
 
 class MainMenuModuleAction:
-    def __init__(self):
+    def __call__(self):
         self.view_handler = Container.get(ViewHandler.__name__)
-        EventListener.add_event_listener(pygame.MOUSEBUTTONDOWN, self.on_click)
+        self.buttons = self.view_handler.get_view().buttons
+        for button in self.buttons:
+            if button.name == 'Settings':
+                button.set_action(self.go_to_settings)
 
-    def on_click(self, event):
-        for button in self.view_handler.get_view().buttons:
-            if button.name == "Settings" and button.rect.collidepoint(event.pos) and Container.exists(SettingsView.__name__):
-                self.view_handler.set_view(Container.get(SettingsView.__name__))
-                return
-
-
+    def go_to_settings(self):
+        self.view_handler.set_view(Container.get(SettingsView.__name__))

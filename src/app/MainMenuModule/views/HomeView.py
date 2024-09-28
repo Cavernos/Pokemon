@@ -18,6 +18,6 @@ class HomeView(View, ABC):
             self.buttons.append(Button(screen, 260, 52, 44, 44, "Settings"))
 
     def update(self):
-        self.group.draw(self.screen)
+        super().update()
         for button in self.buttons:
             button.render()
