@@ -7,7 +7,7 @@ class Button:
     def __init__(self, screen, x, y, width, height, name):
         self.name = name
         self.rect = pygame.Rect(x, y, width, height)
-        self.text = pygame.font.SysFont('Arial', self.rect.size[1] // 2).render(name, True, (255, 255, 0))
+        self.text = pygame.font.SysFont('Arial', self.rect.size[1] // 2).render(name, True, (255, 0, 255))
         self.button = self.text.get_rect()
         self.button.center = self.rect.center
         self.screen = screen
@@ -17,7 +17,7 @@ class Button:
         EventListener.add_event_listener(pygame.MOUSEBUTTONDOWN, self.on_click)
 
     def render(self):
-        pygame.draw.rect(self.screen, (255, 0, 255), self.button)
+        pygame.draw.rect(self.screen, (0, 0, 255), self.button)
         self.screen.blit(self.text, self.button)
 
     def on_click(self, event):

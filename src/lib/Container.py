@@ -34,8 +34,7 @@ class Container:
 
     @classmethod
     def set(cls, key, value):
-        if not key in cls.config.keys():
-            cls.config[key] = value
+        cls.config[key] = value
 
     @classmethod
     def exists(cls, key):

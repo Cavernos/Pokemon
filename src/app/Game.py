@@ -17,14 +17,13 @@ from lib.views import ViewHandler
 
 class Window:
     def __init__(self):
-        self.size: tuple = (960, 640)
         with open(os.path.join(Path(__file__).parent.parent.parent, "pyproject.toml"), "rb") as file:
             self.title: str = tomllib.load(file)['project']['name']
         self.running = False
 
     def run(self):
         pygame.init()
-        pygame.display.set_mode(self.size)
+        pygame.display.set_mode(Container.get('size'))
         pygame.display.set_caption(self.title)
         pygame.display.set_icon(pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "img", "icon.png")))
         self.running = True
@@ -41,6 +40,13 @@ class Window:
     def quit(event):
         pygame.quit()
         sys.exit(0)
+
+    @staticmethod
+    @EventListener.on(pygame.KEYDOWN)
+    def on_key_press(event):
+        if Container.exists("inputs"):
+            if event.key in Container.get("inputs"):
+                Container.get("inputs")[event.key]()
 
 
 class Game(Window):
