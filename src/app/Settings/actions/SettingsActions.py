@@ -7,12 +7,13 @@ from lib.views import ViewHandler
 class SettingsActions:
     def __call__(self, *args, **kwargs):
         self.view_handler = Container.get(ViewHandler.__name__)
-        self.view_handler.get_view().view_resize_button.set_action(self.resize)
+        #self.view_handler.get_view().view_resize_button.set_action(self.resize)
         self.view_handler.get_view().save_button.set_action(self.save)
+        self.view_handler.get_view().select.on_action(self.resize)
 
-    def resize(self):
+    def resize(self, option):
         if Container.exists("size"):
-            Container.set("size", (1024, 1080))
+            Container.set("size", tuple(option.name.split('x')))
             print(Container.get('size'))
 
     def save(self):

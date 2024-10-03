@@ -11,5 +11,5 @@ class MainMenuModuleAction:
             if button.name == 'Settings':
                 button.set_action(self.go_to_settings)
 
-    def go_to_settings(self):
+    def go_to_settings(self, button):
         self.view_handler.set_view(Container.get(SettingsView.__name__))
