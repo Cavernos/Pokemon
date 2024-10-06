@@ -4,7 +4,8 @@ from lib.events import EventListener
 
 
 class Button:
-    def __init__(self, screen, x, y, width, height, name=None):
+    def __init__(self, screen, x, y, width, height, name=None, transparent=False):
+        self.transparent = transparent
         self.rect = pygame.Rect(x, y, width, height)
         self.name = name
         if name is not None:
@@ -21,15 +22,16 @@ class Button:
 
     def render(self):
         if self.name is not None:
-            pygame.draw.rect(self.screen, (0, 0, 255), self.button)
+            if not self.transparent:
+                pygame.draw.rect(self.screen, (0, 0, 255), self.button)
             self.screen.blit(self.text, self.button)
         else:
-            pygame.draw.rect(self.screen, (0, 0, 255), self.rect)
+            if not self.transparent:
+                pygame.draw.rect(self.screen, (0, 0, 255), self.rect)
 
     def on_click(self, event):
         if self.action is not None and self.button.collidepoint(event.pos):
             self.action(self)
-
 
     def on_hover(self, event):
         if self.button.collidepoint(event.pos) and not self.is_hover:

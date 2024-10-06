@@ -7,9 +7,7 @@ class MainMenuModuleAction:
     def __call__(self):
         self.view_handler = Container.get(ViewHandler.__name__)
         self.buttons = self.view_handler.get_view().buttons
-        for button in self.buttons:
-            if button.name == 'Settings':
-                button.set_action(self.go_to_settings)
+        self.buttons[0].set_action(self.go_to_settings)
 
     def go_to_settings(self, button):
         self.view_handler.set_view(Container.get(SettingsView.__name__))

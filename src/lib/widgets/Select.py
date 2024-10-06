@@ -38,4 +38,3 @@ class Select:
     def on_action(self, funct):
         for button in self.options_button:
             button.set_action(funct)
-
