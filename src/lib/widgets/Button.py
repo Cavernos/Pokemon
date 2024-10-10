@@ -7,11 +7,12 @@ from lib.widgets.Widget import Widget
 class Button(Widget):
     def __init__(self, screen, x, y, width, height, **kwargs):
         super().__init__(screen, x, y, width, height, **kwargs)
-        self.rect = pygame.Rect(x, y, width, height)
-
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        self.transparent = getattr(self, "transparent") if hasattr(self, "transparent") else False
+        self.bg_color = getattr(self, "bg_color") if hasattr(self, "bg_color") else (255, 0, 0)
         if hasattr(self, "name") and hasattr(self, "fg_color"):
-            self.text = pygame.font.SysFont('Arial', self.rect.size[1] // 2).render(self.name, True, self.fg_color)
-            self.button = self.text.get_rect()
+            self.text = pygame.font.SysFont('Arial', self.rect.size[1] // 2)
+            self.button = self.text.render(self.name, True, self.fg_color).get_rect()
             self.button.center = self.rect.center
         else:
             self.button = self.rect
@@ -23,11 +24,11 @@ class Button(Widget):
 
     def render(self):
         if hasattr(self, "name"):
-            if hasattr(self,  "transparent") and not self.transparent:
+            if not self.transparent:
                 pygame.draw.rect(self.screen, self.bg_color, self.button)
-            self.screen.blit(self.text, self.button)
+            self.screen.blit(self.text.render(self.name, True, self.fg_color), self.button)
         else:
-            if hasattr(self,  "transparent") and not self.transparent:
+            if not self.transparent:
                 pygame.draw.rect(self.screen, self.bg_color, self.rect)
 
     def on_click(self, event):

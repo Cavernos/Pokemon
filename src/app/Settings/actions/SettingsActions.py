@@ -13,6 +13,7 @@ class SettingsActions:
 
     def resize(self, option):
         self.view_handler.get_view().select.on_click(option)
+        self.view_handler.get_view().select.selected_button.name = option.name
         if Container.exists("size"):
             Container.set("size", tuple(int(i) for i in option.name.split('x')))
             print(Container.get('size'))
