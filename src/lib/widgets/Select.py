@@ -10,7 +10,7 @@ class Select:
                                                  and isinstance(kwargs.get('options'), list)) else []
         self.screen = screen
         self.options_button = [
-            Button(screen, x, y + height * i, width, height, self.options[i]) for i in range(len(self.options))
+            Button(screen, x, y + height * i, width, height, name=self.options[i], fg_color=(0, 0, 0)) for i in range(len(self.options))
         ]
         self.back_rect = pygame.Rect(x, y, width, height)
         self.selection_arrow = Button(screen, x + width, y, 20, height)

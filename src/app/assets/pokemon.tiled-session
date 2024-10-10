@@ -14,12 +14,12 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 87,
-                "y": 286
+                "x": 259,
+                "y": 325
             }
         },
         "maps/tileset/home_back.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.75,
             "scaleInEditor": 1
         },
         "maps/tileset/indoor.tsx": {
@@ -42,7 +42,7 @@
             "scaleInEditor": 1
         },
         "maps/tileset/water.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.75,
             "scaleInEditor": 1
         }
     },

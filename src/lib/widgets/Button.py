@@ -1,15 +1,16 @@
 import pygame
 
 from lib.events import EventListener
+from lib.widgets.Widget import Widget
 
 
-class Button:
-    def __init__(self, screen, x, y, width, height, name=None, transparent=False):
-        self.transparent = transparent
+class Button(Widget):
+    def __init__(self, screen, x, y, width, height, **kwargs):
+        super().__init__(screen, x, y, width, height, **kwargs)
         self.rect = pygame.Rect(x, y, width, height)
-        self.name = name
-        if name is not None:
-            self.text = pygame.font.SysFont('Arial', self.rect.size[1] // 2).render(name, True, (255, 0, 255))
+
+        if hasattr(self, "name") and hasattr(self, "fg_color"):
+            self.text = pygame.font.SysFont('Arial', self.rect.size[1] // 2).render(self.name, True, self.fg_color)
             self.button = self.text.get_rect()
             self.button.center = self.rect.center
         else:
@@ -21,13 +22,13 @@ class Button:
         EventListener.add_event_listener(pygame.MOUSEBUTTONDOWN, self.on_click)
 
     def render(self):
-        if self.name is not None:
-            if not self.transparent:
-                pygame.draw.rect(self.screen, (0, 0, 255), self.button)
+        if hasattr(self, "name"):
+            if hasattr(self,  "transparent") and not self.transparent:
+                pygame.draw.rect(self.screen, self.bg_color, self.button)
             self.screen.blit(self.text, self.button)
         else:
-            if not self.transparent:
-                pygame.draw.rect(self.screen, (0, 0, 255), self.rect)
+            if hasattr(self,  "transparent") and not self.transparent:
+                pygame.draw.rect(self.screen, self.bg_color, self.rect)
 
     def on_click(self, event):
         if self.action is not None and self.button.collidepoint(event.pos):
