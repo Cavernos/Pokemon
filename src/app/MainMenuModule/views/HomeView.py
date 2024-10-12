@@ -1,11 +1,11 @@
 from abc import ABC
 from pydoc import locate
 
-from lib.views import View
+from lib.views import TiledView
 from lib.widgets import Button
 
 
-class HomeView(View, ABC):
+class HomeView(TiledView, ABC):
     def __init__(self, screen):
         super().__init__(screen)
         for objs in self.tmx_data.objectgroups:
