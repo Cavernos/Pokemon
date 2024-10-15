@@ -7,29 +7,37 @@ from lib.widgets.Widget import Widget
 class Button(Widget):
     def __init__(self, screen, x, y, width, height, **kwargs):
         super().__init__(screen, x, y, width, height, **kwargs)
-        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-        self.transparent = getattr(self, "transparent") if hasattr(self, "transparent") else False
-        self.bg_color = getattr(self, "bg_color") if hasattr(self, "bg_color") else (255, 0, 0)
-        if hasattr(self, "name") and hasattr(self, "fg_color"):
-            self.text = pygame.font.SysFont('Arial', self.rect.size[1] // 2)
-            self.button = self.text.render(self.name, True, self.fg_color).get_rect()
-            self.button.center = self.rect.center
+        self.name = kwargs.get('name')
+        self.rect = pygame.Rect(x, y, width, height)
+        if self.name is not None:
+            self.text = pygame.font.SysFont('Arial', self.height // 2, bold=True).render(self.name, True, self.color)
+            self.button = self.text.get_rect()
+            self.text.set_alpha(self.bg_color[3])
+            self.button.topleft = self.rect.topleft
+            self.button.h = self.rect.h
         else:
             self.button = self.rect
-        self.screen = screen
+        self.image = pygame.Surface(self.button.size, pygame.SRCALPHA)
+
+        self.image.fill(self.bg_color)
         self.is_hover = False
         self.action = None
         EventListener.add_event_listener(pygame.MOUSEMOTION, self.on_hover)
         EventListener.add_event_listener(pygame.MOUSEBUTTONDOWN, self.on_click)
+        EventListener.add_event_listener(pygame.USEREVENT, self.on_time)
+        self.fade_in(1000)
 
     def render(self):
-        if hasattr(self, "name"):
+        if self.name is not None:
             if not self.transparent:
-                pygame.draw.rect(self.screen, self.bg_color, self.button)
-            self.screen.blit(self.text.render(self.name, True, self.fg_color), self.button)
+                self.text = pygame.font.SysFont('Arial', self.height // 2, bold=True).render(self.name, True,
+                                                                                             self.color)
+                self.screen.blit(self.image, self.button)
+                self.screen.blit(
+                    self.text, self.button)
         else:
             if not self.transparent:
-                pygame.draw.rect(self.screen, self.bg_color, self.rect)
+                self.screen.blit(self.image, self.button.topleft)
 
     def on_click(self, event):
         if self.action is not None and self.button.collidepoint(event.pos):
@@ -45,3 +53,14 @@ class Button(Widget):
 
     def set_action(self, action):
         self.action = action
+
+    def fade_in(self, millis):
+        self.image.set_alpha(0)
+        if self.name is not None:
+            self.text.set_alpha(0)
+        pygame.time.set_timer(pygame.USEREVENT, millis // 255, loops=millis % 255)
+
+    def on_time(self, event):
+        self.image.set_alpha(self.image.get_alpha() + 1)
+        if self.name is not None:
+            self.text.set_alpha(self.image.get_alpha() + 1)

@@ -8,10 +8,10 @@ class CircleButton(Button):
         super().__init__(screen, x, y, width, height, **kwargs)
 
     def render(self):
-        if hasattr(self, "name"):
-            if hasattr(self, "transparent") and not self.transparent:
+        if self.name is not None:
+            if not self.transparent:
                 pygame.draw.circle(self.screen, self.bg_color, self.button.center, self.button.w / 2)
             self.screen.blit(self.text, self.button)
         else:
-            if hasattr(self, "transparent") and not self.transparent:
+            if not self.transparent:
                 pygame.draw.circle(self.screen, self.bg_color, self.button.center, self.button.w / 2)

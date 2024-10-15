@@ -12,9 +12,6 @@ class HomeView(TiledView, ABC):
             for obj in objs:
                 if isinstance(locate(obj.type), Button.__class__):
                     self.buttons.append(locate(obj.type)(screen, obj.x, obj.y, obj.width, obj.height, transparent=True))
-        print(self.buttons)
-        #if Container.exists(SettingsView.__name__):
-            # self.buttons.append(Button(screen, 260, 52, 44, 44, "Settings"))
 
     def update(self):
         super().update()

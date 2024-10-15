@@ -23,7 +23,7 @@ class Window:
 
     def run(self):
         pygame.init()
-        pygame.display.set_mode(Container.get('size'))
+        pygame.display.set_mode(Container.get('size'), flags=pygame.RESIZABLE)
         pygame.display.set_caption(self.title)
         pygame.display.set_icon(pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "img", "icon.png")))
         self.running = True

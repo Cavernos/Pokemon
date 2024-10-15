@@ -12,7 +12,6 @@ from lib.events import EventListener
 class View:
     def __init__(self, screen):
         self.screen = screen
-
         self.buttons = []
 
     @abstractmethod
