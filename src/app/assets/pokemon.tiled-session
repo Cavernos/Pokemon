@@ -14,8 +14,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 259,
-                "y": 325
+                "x": 257,
+                "y": 181
             }
         },
         "maps/tileset/home_back.tsx": {
@@ -60,8 +60,8 @@
     ],
     "project": "pokemon.tiled-project",
     "recentFiles": [
-        "maps/tileset/home_back.tsx",
         "maps/home.tmx",
+        "maps/tileset/home_back.tsx",
         "maps/tileset/water.tsx",
         "maps/tileset/tileset_pokemon_sdk.tsx",
         "maps/tileset/pokemon-center.tsx",
