@@ -25,8 +25,11 @@ class Select(Widget):
     def render(self):
         pygame.draw.rect(self.screen, self.bg_color, self.back_rect)
         self.selection_arrow.render()
+        for button in self.options_button:
+            button.set_alpha(0)
         if self.clicked:
             for button in self.options_button:
+                button.set_alpha(255)
                 button.render()
         self.selected_button.render()
 

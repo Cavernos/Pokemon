@@ -11,9 +11,10 @@ class Widget:
         self.transparent = kwargs.get('transparent') if kwargs.get('transparent') is not None else False
         self.bg_color = pygame.Color(kwargs.get('bg_color')) if kwargs.get('bg_color') is not None else (255, 255, 255, 255)
         self.color = pygame.Color(kwargs.get('color')) if kwargs.get('color') is not None else (0, 0, 0, 255)
+        self.animation = None
 
     def render(self):
         ...
 
-    def set_style(self):
-        pass
+    def set_animation(self, animation):
+        self.animation = animation

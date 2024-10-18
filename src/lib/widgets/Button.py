@@ -11,7 +11,8 @@ class Button(Widget):
         self.name = kwargs.get('name')
         self.rect = pygame.Rect(x, y, width, height)
         if self.name is not None:
-            self.text = Label(screen, x, y, width, height, name=self.name, font_weight="bold", font_size=self.height // 2)
+            self.text = Label(screen, x, y, width, height, name=self.name, font_weight="bold",
+                              font_size=self.height // 2)
             self.button = self.text.get_rect()
             self.text.set_alpha(self.bg_color[3])
             self.button.topleft = self.rect.topleft
@@ -25,10 +26,10 @@ class Button(Widget):
         self.action = None
         EventListener.add_event_listener(pygame.MOUSEMOTION, self.on_hover)
         EventListener.add_event_listener(pygame.MOUSEBUTTONDOWN, self.on_click)
-        EventListener.add_event_listener(pygame.USEREVENT, self.on_time)
-        self.fade_in(1000)
+        EventListener.add_event_listener(pygame.USEREVENT + 2, self.on_time_2)
 
     def render(self):
+        print('render')
         if self.name is not None:
             if not self.transparent:
                 self.screen.blit(self.image, self.button)
@@ -39,6 +40,7 @@ class Button(Widget):
 
     def on_click(self, event):
         if self.action is not None and self.button.collidepoint(event.pos):
+            self.fade_out(1000)
             self.action(self)
 
     def on_hover(self, event):
@@ -60,9 +62,27 @@ class Button(Widget):
         self.image.set_alpha(0)
         if self.name is not None:
             self.text.set_alpha(0)
-        pygame.time.set_timer(pygame.USEREVENT, millis // 255, loops=255)
+        pygame.time.set_timer(pygame.USEREVENT + 1, millis // 255, loops=255)
+
+    def fade_out(self, millis):
+        #self.image.set_alpha(255)
+        #if self.name is not None:
+        #    self.text.set_alpha(255)
+        pygame.time.set_timer(pygame.USEREVENT + 2, millis // 255, loops=255)
+        # while self.image.get_alpha() != 0:
+        #     self.set_alpha(self.image.get_alpha() - 1)
+        #     pygame.time.delay(millis // 255)
+
+    def set_alpha(self, value):
+        self.image.set_alpha(value)
+        if self.name is not None:
+            self.text.set_alpha(value)
 
     def on_time(self, event):
         self.image.set_alpha(self.image.get_alpha() + 1)
         if self.name is not None:
             self.text.set_alpha(self.image.get_alpha() + 1)
+
+    def on_time_2(self, event):
+        print(self.image.get_alpha())
+        self.set_alpha(self.image.get_alpha() - 1)

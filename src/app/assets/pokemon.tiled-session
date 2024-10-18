@@ -5,21 +5,21 @@
     },
     "activeFile": "maps/home.tmx",
     "expandedProjectPaths": [
-        "maps/tileset",
+        "maps",
         ".",
-        "maps"
+        "maps/tileset"
     ],
     "fileStates": {
         "maps/home.tmx": {
-            "scale": 1,
+            "scale": 4,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 257,
-                "y": 181
+                "x": 490.5,
+                "y": 554.25
             }
         },
         "maps/tileset/home_back.tsx": {
-            "scaleInDock": 0.75,
+            "scaleInDock": 2,
             "scaleInEditor": 1
         },
         "maps/tileset/indoor.tsx": {
@@ -55,13 +55,13 @@
     "map.tileWidth": 16,
     "map.width": 60,
     "openFiles": [
-        "maps/home.tmx",
-        "maps/tileset/home_back.tsx"
+        "maps/tileset/home_back.tsx",
+        "maps/home.tmx"
     ],
     "project": "pokemon.tiled-project",
     "recentFiles": [
-        "maps/home.tmx",
         "maps/tileset/home_back.tsx",
+        "maps/home.tmx",
         "maps/tileset/water.tsx",
         "maps/tileset/tileset_pokemon_sdk.tsx",
         "maps/tileset/pokemon-center.tsx",
