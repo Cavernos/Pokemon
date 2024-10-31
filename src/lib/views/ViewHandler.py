@@ -12,8 +12,9 @@ class ViewHandler:
         if pygame.display.get_init():
             if Container.exists(view.__name__):
                 self.curent_view = view(pygame.display.get_surface())
-                if callable(Container.get(view.__module__.split('.')[1]).action):
-                    Container.get(view.__module__.split('.')[1]).action()
+                if hasattr(Container.get(view.__module__.split('.')[1]), "action"):
+                    if callable(Container.get(view.__module__.split('.')[1]).action):
+                        Container.get(view.__module__.split('.')[1]).action()
             else:
                 self.curent_view = None
 

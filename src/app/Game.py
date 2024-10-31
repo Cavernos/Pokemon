@@ -41,13 +41,6 @@ class Window:
         pygame.quit()
         sys.exit(0)
 
-    @staticmethod
-    @EventListener.on(pygame.KEYDOWN)
-    def on_key_press(event):
-        if Container.exists("inputs"):
-            if event.key in Container.get("inputs"):
-                Container.get("inputs")[event.key]()
-
 
 class Game(Window):
     def __init__(self, definition):

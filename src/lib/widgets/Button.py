@@ -29,7 +29,6 @@ class Button(Widget):
         EventListener.add_event_listener(pygame.USEREVENT + 2, self.on_time_2)
 
     def render(self):
-        print('render')
         if self.name is not None:
             if not self.transparent:
                 self.screen.blit(self.image, self.button)
@@ -84,5 +83,5 @@ class Button(Widget):
             self.text.set_alpha(self.image.get_alpha() + 1)
 
     def on_time_2(self, event):
-        print(self.image.get_alpha())
+        #print(self.image.get_alpha())
         self.set_alpha(self.image.get_alpha() - 1)
