@@ -10,6 +10,8 @@ class PlayerAction:
         EventListener.add_event_listener(pygame.USEREVENT, self.on_key_press)
 
     def on_key_press(self, event):
-        for key in Container.get('inputs').keys():
+        for key, value in Container.get('inputs').items():
             if event.key[key]:
                 getattr(self.player, Container.get('inputs')[key])(1)
+            elif value == self.player.sprint.__name__:
+                    self.player.slow()

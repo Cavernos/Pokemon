@@ -12,13 +12,8 @@ class MapView(TiledView, ABC):
     def __init__(self, screen):
         super().__init__(screen)
         if Container.exists(Sprite.__name__):
-            self.player = Player(848, 540, 16, 16)
-        for e in self.size:
-            for i in self.screen.get_size():
-                print(e / i)
-
-        print(self.size, self.screen.get_size())
-        self.map_layer.zoom = 8/3
+            self.player = Player(848, 664, 16, 16)
+        self.map_layer.zoom = 5/2
 
     def update(self):
         self.group.center(self.player.rect.center)
