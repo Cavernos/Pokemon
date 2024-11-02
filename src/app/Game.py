@@ -14,7 +14,10 @@ from lib import Container, Module
 from lib.events import EventListener
 from lib.views import ViewHandler
 
-
+from entity import Entity 
+from keylistener import Keylistener
+from Player import Player
+from screen import Screen
 class Window:
     def __init__(self):
         with open(os.path.join(Path(__file__).parent.parent.parent, "pyproject.toml"), "rb") as file:
@@ -48,6 +51,9 @@ class Game(Window):
         self.clock = pygame.time.Clock
         self.definition = definition
         self.modules = []
+        self.Player = Player(self.keylistener, self.screen , 0, 0)
+        self.map.addplayer(self.Player)
+        self.keylistener = Keylistener()
 
     def add_module(self, module: Type[Module]) -> Self:
         self.modules.append(module)
@@ -66,3 +72,12 @@ class Game(Window):
             if module.definitions:
                 Container.add_definitions(module.definitions)
         return Container
+    
+    def handle_input(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            elif event.type == pygame.KEYDOWN:
+                self.keylistener.add_key(event.key)
+            elif event.type == pygame.KEYUP:
+                self.keylistener.remove_key(event.key)

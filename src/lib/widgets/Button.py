@@ -84,4 +84,4 @@ class Button(Widget):
 
     def on_time_2(self, event):
         #print(self.image.get_alpha())
-        self.set_alpha(self.image.get_alpha() - 1)
+        self.set_alpha(self.image.get_alpha() - 1)     
