@@ -29,16 +29,18 @@ class TiledView(View):
     def __init__(self, screen):
         super().__init__(screen)
         try:
-            self.tmx_data = pytmx.load_pygame(f"{
-            Container.get("APP")}\\assets\\maps\\{self.__class__.__name__.split('View')[0].lower()}.tmx")
+            self.tmx_data = pytmx.load_pygame(f"{Container.get("APP")}\\assets\\maps\\"
+                                              f"{self.__class__.__name__.split('View')[0].lower()}.tmx")
         except FileNotFoundError as e:
             self.tmx_data = None
             logging.getLogger(__name__).warning(
                 f"could not load : {self.__class__.__name__.split('View')[0].lower()}.tmx")
+
         if self.tmx_data is not None:
             map_data = pyscroll.data.TiledMapData(self.tmx_data)
-            self.map_layer = pyscroll.BufferedRenderer(map_data, self.screen.get_size())
-            self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=1)
+            self.size = self.tmx_data.width * self.tmx_data.tilewidth, self.tmx_data.height * self.tmx_data.tileheight
+            self.map_layer = pyscroll.BufferedRenderer(map_data, self.size)
+            self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=6)
 
     def update(self):
         if self.tmx_data is None:

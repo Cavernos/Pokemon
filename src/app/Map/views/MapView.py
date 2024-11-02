@@ -1,18 +1,29 @@
 from abc import ABC
 
+import pygame.key
+
 from app.Sprite import Sprite
 from app.Sprite.entity import Player
 from lib import Container
-from lib.views import View
+from lib.views import TiledView
 
 
-class MapView(View, ABC):
+class MapView(TiledView, ABC):
     def __init__(self, screen):
         super().__init__(screen)
         if Container.exists(Sprite.__name__):
-            self.player = Player()
+            self.player = Player(848, 540, 16, 16)
+        for e in self.size:
+            for i in self.screen.get_size():
+                print(e / i)
+
+        print(self.size, self.screen.get_size())
+        self.map_layer.zoom = 8/3
 
     def update(self):
-        super().update()
+        self.group.center(self.player.rect.center)
+        self.group.draw(self.screen)
         if hasattr(self, "player"):
-            self.player.render()
+            self.group.add(self.player)
+        if True in pygame.key.get_pressed():
+            pygame.event.post(pygame.event.Event(pygame.USEREVENT, key=pygame.key.get_pressed()))
