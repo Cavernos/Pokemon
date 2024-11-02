@@ -5,9 +5,9 @@
     },
     "activeFile": "maps/map.tmx",
     "expandedProjectPaths": [
+        ".",
         "maps",
-        "maps/tileset",
-        "."
+        "maps/tileset"
     ],
     "fileStates": {
         "maps/home.tmx": {
@@ -22,15 +22,15 @@
             "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 101.5,
-                "y": 99.5
+                "x": 73.25,
+                "y": 80
             }
         },
         "maps/map.tmx": {
             "scale": 0.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 760,
+                "x": 824,
                 "y": 788
             }
         },
@@ -38,16 +38,16 @@
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 96.75,
-                "y": 74.5
+                "x": 96,
+                "y": 80
             }
         },
         "maps/pokemon_store.tmx": {
             "scale": 5.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 79.27272727272728,
-                "y": 62.727272727272734
+                "x": 80,
+                "y": 64
             }
         },
         "maps/tileset/indoor.tsx": {
