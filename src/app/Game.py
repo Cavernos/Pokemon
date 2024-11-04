@@ -19,6 +19,7 @@ class Window:
     def __init__(self):
         with open(os.path.join(Path(__file__).parent.parent.parent, "pyproject.toml"), "rb") as file:
             self.title: str = tomllib.load(file)['project']['name']
+        self.clock = pygame.time.Clock()
         self.running = False
 
     def run(self):
@@ -32,6 +33,7 @@ class Window:
             view_handler.set_view(Container.get(HomeView.__name__))
         while self.running:
             view_handler.update()
+            self.clock.tick(Container.get('FPS'))
             for e in pygame.event.get():
                 EventListener.handle(e)
             pygame.display.flip()
@@ -46,7 +48,6 @@ class Window:
 class Game(Window):
     def __init__(self, definition):
         super().__init__()
-        self.clock = pygame.time.Clock
         self.definition = definition
         self.modules = []
 

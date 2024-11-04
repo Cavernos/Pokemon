@@ -11,9 +11,10 @@ from lib.views import TiledView
 class MapView(TiledView, ABC):
     def __init__(self, screen):
         super().__init__(screen)
+        self.map_layer.zoom = 5 / 2
         if Container.exists(Sprite.__name__):
-            self.player = Player(848, 664, 16, 16)
-        self.map_layer.zoom = 5/2
+            self.player = Player(71*16, 84*16)
+
 
     def update(self):
         self.group.center(self.player.rect.center)

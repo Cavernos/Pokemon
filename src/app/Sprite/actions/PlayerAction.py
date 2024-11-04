@@ -14,4 +14,4 @@ class PlayerAction:
             if event.key[key]:
                 getattr(self.player, Container.get('inputs')[key])(1)
             elif value == self.player.sprint.__name__:
-                    self.player.slow()
+                self.player.slow()
