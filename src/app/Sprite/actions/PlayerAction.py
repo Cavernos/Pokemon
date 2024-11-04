@@ -12,6 +12,6 @@ class PlayerAction:
     def on_key_press(self, event):
         for key, value in Container.get('inputs').items():
             if event.key[key]:
-                getattr(self.player, Container.get('inputs')[key])(1)
+                self.player.move(Container.get('inputs')[key])
             elif value == self.player.sprint.__name__:
                 self.player.slow()
