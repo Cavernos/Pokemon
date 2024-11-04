@@ -6,7 +6,7 @@ from lib import Container
 
 
 class Entity(pygame.sprite.Sprite):
-    def __init__(self, x, y, name,  *groups):
+    def __init__(self, x, y, name, *groups):
         super().__init__(*groups)
         self.x = x
         self.y = y
@@ -17,6 +17,8 @@ class Entity(pygame.sprite.Sprite):
         self.image = self.loaded_image
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         self.animation_counter = [0 for i in range(4)]
+        self.position = [x, y]
+        self.obstacles = []
         self.velocity = 1
 
     def move_left(self, x):

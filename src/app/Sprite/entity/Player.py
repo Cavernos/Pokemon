@@ -13,4 +13,17 @@ class Player(Entity):
         self.width = self.width // 4
         self.height = self.height // 4
         self.image = self.loaded_image.subsurface((0, 0, self.width, self.height))
+        self.rect.width = self.width
+        self.rect.height = self.height
+        self.feet = pygame.Rect(self.rect.x, self.rect.height + 12, self.width * 0.5, 12)
+
+    def move(self, func_name):
+        old_position = [self.rect.x, self.rect.y].copy()
+        getattr(self, func_name)(1)
+        self.position = [self.rect.x, self.rect.y].copy()
+        self.feet.midbottom = self.rect.midbottom
+        if self.feet.collidelist(self.obstacles) != -1:
+            self.position = old_position
+            self.rect.topleft = old_position
+            self.feet.midbottom = self.rect.midbottom
 

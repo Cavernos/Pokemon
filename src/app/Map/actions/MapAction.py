@@ -1,5 +1,3 @@
-import threading
-
 import pygame.time
 
 from app.Sprite.actions import PlayerAction
@@ -12,10 +10,11 @@ class MapAction:
         self.view_handler = Container.get(ViewHandler.__name__)
         if hasattr(self.view_handler.get_view(), 'player'):
             self.player = self.view_handler.get_view().player
-            if Container.get('playable'):
-                PlayerAction()(self.player)
-            else:
-                threading.Thread(daemon=True, target=self.cinematic).start()
+            PlayerAction()(self.player)
+            # if Container.get('playable'):
+            #     PlayerAction()(self.player)
+            # else:
+            #     threading.Thread(daemon=True, target=self.cinematic).start()
 
     def cinematic(self):
         while self.player.rect.x <= 1328:
