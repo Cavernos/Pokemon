@@ -8,6 +8,8 @@ from lib.views import ViewHandler
 
 config = {
     "version": "0.0.1",
+    "FPS": 60,
+    "size": (960, 640),
     "SRC": os.path.join(Path(os.path.dirname(os.path.abspath(__file__))).parent, "src\\"),
     "APP": os.path.join(Path(os.path.dirname(os.path.abspath(__file__))).parent, "src", "app\\"),
     LoaderInterface.__name__: factory(LoaderFactory()),
