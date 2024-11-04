@@ -7,11 +7,12 @@ from lib.loaders import LoaderFactory, LoaderInterface
 from lib.views import ViewHandler
 
 config = {
-    "version": "0.0.1",
+    "VERSION": "0.0.1",
     "FPS": 60,
-    "size": (960, 640),
+    "SIZE": (960, 640),
     "SRC": os.path.join(Path(os.path.dirname(os.path.abspath(__file__))).parent, "src\\"),
     "APP": os.path.join(Path(os.path.dirname(os.path.abspath(__file__))).parent, "src", "app\\"),
+    "ASSETS": os.path.join(Path(os.path.dirname(os.path.abspath(__file__))).parent, "src", "app", "assets\\"),
     LoaderInterface.__name__: factory(LoaderFactory()),
     ViewHandler.__name__: ViewHandler(),
     EventListener.__name__: EventListener(),

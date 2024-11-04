@@ -12,22 +12,21 @@ class MapView(TiledView, ABC):
     def __init__(self, screen):
         super().__init__(screen)
         self.map_layer.zoom = 5
-        
-        # collisions
         self.obstacles = []
-        for obj in self.tmx_data.objects:
-            if obj.type == 'collision':
-                self.obstacles.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
-
+        for objs in self.tmx_data.objectgroups:
+            for obj in objs:
+                if objs.name == 'collision':
+                    self.obstacles.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
         if Container.exists(Sprite.__name__):
-            self.player = Player(71*16, 84*16)
+            self.player = Player(71 * 16, 84 * 16)
             self.player.obstacles = self.obstacles
-
+            #self.bulbizarre = Pokemon(72 * 16, 84 * 16, "bulbizarre")
 
     def update(self):
         self.group.center(self.player.rect.center)
         self.group.draw(self.screen)
-        if hasattr(self, "player"):
+        if Container.exists(Sprite.__name__):
             self.group.add(self.player)
+            #self.group.add(self.bulbizarre)
         if True in pygame.key.get_pressed():
             pygame.event.post(pygame.event.Event(pygame.USEREVENT, key=pygame.key.get_pressed()))
