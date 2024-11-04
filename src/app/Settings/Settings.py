@@ -1,5 +1,6 @@
 import os.path
 
+from app.Settings.actions import SettingsActions
 from lib import Module
 
 
@@ -8,3 +9,4 @@ class Settings(Module):
 
     def __init__(self):
         super().__init__()
+        self.action = SettingsActions()

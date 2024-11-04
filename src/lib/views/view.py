@@ -12,24 +12,11 @@ from lib.events import EventListener
 class View:
     def __init__(self, screen):
         self.screen = screen
-        try:
-            self.tmx_data = pytmx.load_pygame(f"{
-            Container.get("APP")}\\assets\\maps\\{self.__class__.__name__.split('View')[0].lower()}.tmx")
-        except FileNotFoundError as e:
-            self.tmx_data = None
-            logging.getLogger(__name__).warning(f"could not load : {self.__class__.__name__.split('View')[0].lower()}.tmx")
-        if self.tmx_data is not None:
-            map_data = pyscroll.data.TiledMapData(self.tmx_data)
-            self.map_layer = pyscroll.BufferedRenderer(map_data, self.screen.get_size())
-            self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=1)
         self.buttons = []
 
     @abstractmethod
     def update(self):
-        if self.tmx_data is None:
-            self.screen.fill((0, 0, 0))
-        else:
-            self.group.draw(self.screen)
+        self.screen.fill((0, 0, 0))
 
     def __del__(self):
         for button in self.buttons:
@@ -37,3 +24,26 @@ class View:
         EventListener.remove_event_listener(pygame.MOUSEBUTTONDOWN)
         pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
+
+class TiledView(View):
+    def __init__(self, screen):
+        super().__init__(screen)
+        try:
+            self.tmx_data = pytmx.load_pygame(f"{Container.get("APP")}\\assets\\maps\\"
+                                              f"{self.__class__.__name__.split('View')[0].lower()}.tmx")
+        except FileNotFoundError as e:
+            self.tmx_data = None
+            logging.getLogger(__name__).warning(
+                f"could not load : {self.__class__.__name__.split('View')[0].lower()}.tmx")
+
+        if self.tmx_data is not None:
+            map_data = pyscroll.data.TiledMapData(self.tmx_data)
+            self.size = self.tmx_data.width * self.tmx_data.tilewidth, self.tmx_data.height * self.tmx_data.tileheight
+            self.map_layer = pyscroll.BufferedRenderer(map_data, self.size)
+            self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=8)
+
+    def update(self):
+        if self.tmx_data is None:
+            super().update()
+        else:
+            self.group.draw(self.screen)

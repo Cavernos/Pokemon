@@ -5,5 +5,7 @@ config = {
     Settings.__name__: Settings(),
     "views": {
         SettingsView.__name__: SettingsView
+    },
+    "inputs": {
     }
 }

@@ -17,14 +17,14 @@ from lib.views import ViewHandler
 
 class Window:
     def __init__(self):
-        self.size: tuple = (960, 640)
         with open(os.path.join(Path(__file__).parent.parent.parent, "pyproject.toml"), "rb") as file:
             self.title: str = tomllib.load(file)['project']['name']
+        self.clock = pygame.time.Clock()
         self.running = False
 
     def run(self):
         pygame.init()
-        pygame.display.set_mode(self.size)
+        pygame.display.set_mode(Container.get('size'), flags=pygame.RESIZABLE)
         pygame.display.set_caption(self.title)
         pygame.display.set_icon(pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "img", "icon.png")))
         self.running = True
@@ -33,7 +33,9 @@ class Window:
             view_handler.set_view(Container.get(HomeView.__name__))
         while self.running:
             view_handler.update()
-            EventListener.handle(pygame.event.poll())
+            self.clock.tick(Container.get('FPS'))
+            for e in pygame.event.get():
+                EventListener.handle(e)
             pygame.display.flip()
 
     @staticmethod
@@ -46,7 +48,6 @@ class Window:
 class Game(Window):
     def __init__(self, definition):
         super().__init__()
-        self.clock = pygame.time.Clock
         self.definition = definition
         self.modules = []
 
