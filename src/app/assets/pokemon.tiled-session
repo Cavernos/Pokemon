@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/house1.tmx",
+    "activeFile": "maps/map.tmx",
     "expandedProjectPaths": [
-        "maps",
+        "maps/tileset",
         ".",
-        "maps/tileset"
+        "maps"
     ],
     "fileStates": {
         "maps/home.tmx": {
@@ -19,32 +19,45 @@
             }
         },
         "maps/house1.tmx": {
-            "scale": 3,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                9
+            ],
+            "scale": 4,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 123.5,
-                "y": 64.49999999999999
+                "x": 126.125,
+                "y": 83.625
             }
         },
         "maps/map.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 7,
+            "expandedObjectLayers": [
+                13,
+                12
+            ],
+            "scale": 0.5,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1089.3939393939393,
-                "y": 940.9090909090908
+                "x": 1327,
+                "y": 903
             }
         },
         "maps/pokemon_center.tmx": {
+            "expandedObjectLayers": [
+                6
+            ],
             "scale": 4,
-            "selectedLayer": 2,
+            "selectedLayer": 4,
             "viewCenter": {
                 "x": 126.875,
                 "y": 79.875
             }
         },
         "maps/pokemon_store.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
             "scale": 4,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
                 "x": 115.125,
                 "y": 69.875
@@ -91,10 +104,10 @@
     ],
     "project": "pokemon.tiled-project",
     "recentFiles": [
-        "maps/map.tmx",
-        "maps/pokemon_center.tmx",
-        "maps/pokemon_store.tmx",
         "maps/house1.tmx",
+        "maps/pokemon_store.tmx",
+        "maps/pokemon_center.tmx",
+        "maps/map.tmx",
         "maps/home.tmx",
         "maps/tileset/tileset4g.tsx",
         "maps/tileset/water.tsx",
