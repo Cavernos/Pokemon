@@ -1,1 +1,0 @@
-from app.module.views.HomView import HomView
