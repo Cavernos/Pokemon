@@ -31,14 +31,14 @@
         },
         "maps/map.tmx": {
             "expandedObjectLayers": [
-                12,
-                13
+                13,
+                12
             ],
-            "scale": 0.5,
+            "scale": 1.5,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 1200,
-                "y": 799
+                "x": 1253.3333333333333,
+                "y": 1296
             }
         },
         "maps/pokemon_center.tmx": {

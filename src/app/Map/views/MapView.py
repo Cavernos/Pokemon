@@ -11,7 +11,7 @@ from lib.views import TiledView
 class MapView(TiledView, ABC):
     def __init__(self, screen):
         super().__init__(screen)
-        self.map_layer.zoom = 5 / 2
+        self.map_layer.zoom = 5
         
         # collisions
         self.obstacles = []

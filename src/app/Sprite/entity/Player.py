@@ -20,7 +20,8 @@ class Player(pygame.sprite.Sprite):
         
         # collision
         self.position = [x, y]
-        self.feet = pygame.Rect(self.rect.x + self.width * 0.5, self.rect.height + 12, self.width * 0.5, 12)
+        self.feet = pygame.Rect(0, 0, self.width * 0.5, 12)
+        self.feet.midbottom = self.rect.midbottom
         self.obstacles = []
         
     # movements
@@ -28,36 +29,31 @@ class Player(pygame.sprite.Sprite):
         self.image = self.loaded_image.subsurface(
             (self.play_anim(0)*self.width, self.height, self.width, self.height))
         self.rect.x -= (x * self.velocity)
-        self.feet.x -= (x * self.velocity)
 
     def move_right(self, x):
         self.image = self.loaded_image.subsurface(
             (self.play_anim(1) * self.width, 2*self.height, self.width, self.height))
         self.rect.x += (x * self.velocity)
-        self.feet.x += (x * self.velocity)
 
     def move_bottom(self, y):
         self.image = self.loaded_image.subsurface(
             (self.play_anim(2) * self.width, 0 * self.height, self.width, self.height))
         self.rect.y += (y * self.velocity)
-        self.feet.y += (y * self.velocity)
 
     def move_up(self, y):
         self.image = self.loaded_image.subsurface(
             (self.play_anim(3) * self.width, 3 * self.height, self.width, self.height))
         self.rect.y -= (y * self.velocity)
-        self.feet.y -= (y * self.velocity)
         
     def move(self, func_name):
-        print('moving')
         old_position = [self.rect.x, self.rect.y].copy()
-        getattr(self, func_name)(1)
-        self.position = [self.rect.x, self.rect.y].copy()
         
-        print(self.feet)
+        getattr(self, func_name)(1)
+        
+        self.position = [self.rect.x, self.rect.y].copy()
+        self.feet.midbottom = self.rect.midbottom
         
         if self.feet.collidelist(self.obstacles) != -1:
-            print('COLLISION')
             self.position = old_position
             self.rect.topleft = old_position
             self.feet.midbottom = self.rect.midbottom
