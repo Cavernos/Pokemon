@@ -19,6 +19,7 @@ class Entity(pygame.sprite.Sprite):
         self.animation_counter = [0 for i in range(4)]
         self.position = [x, y]
         self.obstacles = []
+        self.playable =False
         self.velocity = 1
 
     def move_left(self, x):

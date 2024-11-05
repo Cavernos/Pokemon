@@ -39,7 +39,6 @@ class Button(Widget):
 
     def on_click(self, event):
         if self.action is not None and self.button.collidepoint(event.pos):
-            self.fade_out(1000)
             self.action(self)
 
     def on_hover(self, event):

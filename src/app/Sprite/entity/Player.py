@@ -13,8 +13,8 @@ class Player(Entity):
         self.width = self.width // 4
         self.height = self.height // 4
         self.image = self.loaded_image.subsurface((0, 0, self.width, self.height))
-        self.rect.width = self.width
-        self.rect.height = self.height
+        self.rect.size = self.width, self.height
+        self.playable = True
         self.feet = pygame.Rect(self.rect.x, self.rect.height + 12, self.width * 0.5, 12)
 
     def move(self, func_name):

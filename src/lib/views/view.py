@@ -22,6 +22,7 @@ class View:
         for button in self.buttons:
             EventListener.remove_event_listener(pygame.MOUSEMOTION, button.on_hover)
         EventListener.remove_event_listener(pygame.MOUSEBUTTONDOWN)
+        EventListener.remove_event_listener(pygame.KEYDOWN)
         pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
