@@ -26,9 +26,10 @@ class Button(Widget):
         self.action = None
         EventListener.add_event_listener(pygame.MOUSEMOTION, self.on_hover)
         EventListener.add_event_listener(pygame.MOUSEBUTTONDOWN, self.on_click)
-        EventListener.add_event_listener(pygame.USEREVENT + 2, self.on_time_2)
+        #EventListener.add_event_listener(pygame.USEREVENT + 2, self.on_time_2)
 
     def render(self):
+        self.set_alpha(255)
         if self.name is not None:
             if not self.transparent:
                 self.screen.blit(self.image, self.button)
@@ -38,12 +39,11 @@ class Button(Widget):
                 self.screen.blit(self.image, self.button.topleft)
 
     def on_click(self, event):
-        if self.action is not None and self.button.collidepoint(event.pos):
-            self.fade_out(1000)
+        if self.action is not None and self.button.collidepoint(event.pos) and self.get_alpha() != 0:
             self.action(self)
 
     def on_hover(self, event):
-        if self.button.collidepoint(event.pos) and not self.is_hover:
+        if self.button.collidepoint(event.pos) and not self.is_hover and self.get_alpha() != 0:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
             self.is_hover = True
         if not self.button.collidepoint(event.pos) and self.is_hover:
@@ -76,6 +76,8 @@ class Button(Widget):
         self.image.set_alpha(value)
         if self.name is not None:
             self.text.set_alpha(value)
+    def get_alpha(self):
+        return self.image.get_alpha()
 
     def on_time(self, event):
         self.image.set_alpha(self.image.get_alpha() + 1)

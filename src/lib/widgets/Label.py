@@ -31,5 +31,5 @@ class Label(Widget):
         self.name = name
         self.text_surface = self.text.render(self.name, True, self.color)
 
-    def get_rect(self):
-        return self.text_surface.get_rect()
+    def get_rect(self, **kwargs):
+        return self.text_surface.get_rect(**kwargs)
