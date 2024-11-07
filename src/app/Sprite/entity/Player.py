@@ -7,11 +7,12 @@ from lib import Container
 
 
 class Player(Entity):
-    def __init__(self, x, y, *groups):
-        super().__init__(x, y, name='player', *groups)
+    def __init__(self, x, y, width=100, height=128, *groups):
+        super().__init__(x, y, width, height, *groups)
         self.loaded_image = pygame.image.load(os.path.join(Container.get('ASSETS'), 'entities', 'player.png'))
-        self.width = self.width // 4
-        self.height = self.height // 4
+        self.number_of_sprite = 4
+        self.width = self.loaded_image.get_width() // 4
+        self.height = (self.loaded_image.get_height() // 4)
         self.image = self.loaded_image.subsurface((0, 0, self.width, self.height))
         self.rect.size = self.width, self.height
         self.playable = True

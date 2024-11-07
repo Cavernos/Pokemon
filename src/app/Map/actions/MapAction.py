@@ -1,7 +1,8 @@
 import pygame.time
 
 from app.MainMenuModule.views import HomeView
-from app.Sprite.actions import PlayerAction
+from app.Sprite import Sprite
+from app.Sprite.actions import PlayerAction, PokemonAction
 from lib import Container
 from lib.events import EventListener
 from lib.views import ViewHandler
@@ -15,9 +16,11 @@ class MapAction:
         self.current_view.accept_button.set_action(self.return_to_main_menu)
         self.current_view.discard_button.set_action(self.escape_menu)
         self.escape_press_counter = 0
-        if hasattr(self.current_view, 'player'):
+        if Container.exists(Sprite.__name__):
             self.player = self.current_view.player
+            self.pokemon = self.current_view.pokemon
             PlayerAction()(self.player)
+            PokemonAction()(self.pokemon)
 
     def on_key_press(self, event):
         if event.key in Container.get('inputs'):

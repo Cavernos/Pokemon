@@ -1,10 +1,12 @@
+import os
 from abc import ABC
 
 import pygame.key
 
 from app.Sprite import Sprite
-from app.Sprite.entity import Player
+from app.Sprite.entity import Player, Pokemon
 from lib import Container
+from lib.loaders import FileLoader, LoaderFactory, LoaderInterface
 from lib.views import TiledView
 from lib.widgets import Button
 from lib.widgets.Label import Label
@@ -36,7 +38,8 @@ class MapView(TiledView, ABC):
                 if objs.name == 'collision':
                     self.obstacles.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
         if Container.exists(Sprite.__name__):
-            self.player = Player(71 * 16, 84 * 16)
+            self.player = Player(71, 84)
+            self.pokemon = Container.get(LoaderInterface.__name__).load_from_index(Pokemon, 1)
             self.player.obstacles = self.obstacles
 
     def update(self):
@@ -52,5 +55,6 @@ class MapView(TiledView, ABC):
             self.discard_button.set_alpha(0)
         if Container.exists(Sprite.__name__):
             self.group.add(self.player)
+            self.group.add(self.pokemon)
         if True in pygame.key.get_pressed():
             pygame.event.post(pygame.event.Event(pygame.USEREVENT, key=pygame.key.get_pressed()))
