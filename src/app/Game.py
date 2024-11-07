@@ -1,8 +1,6 @@
 import logging
 import os.path
 import sys
-import tomllib
-from pathlib import Path
 from typing import Type, Self
 
 import pygame
@@ -17,8 +15,7 @@ from lib.views import ViewHandler
 
 class Window:
     def __init__(self):
-        with open(os.path.join(Path(__file__).parent.parent.parent, "pyproject.toml"), "rb") as file:
-            self.title: str = tomllib.load(file)['project']['name']
+        self.title: str = 'Pokemon'
         self.clock = pygame.time.Clock()
         self.running = False
 

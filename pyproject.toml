@@ -29,6 +29,9 @@ Issues = "https://github.com/Cavernos/Pokemon/issues"
 test = [
     "pytest-cov >=3.8.8",
 ]
+dev = [
+    "pyinstaller"
+]
 
 [setuptools.dynamic]
 version = {attr= "main.__version__"}
