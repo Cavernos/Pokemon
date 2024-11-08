@@ -16,3 +16,10 @@ class Pokemon(Entity):
         self.height = height // 4
         self.image = self.loaded_image.subsurface((0, 0, self.width, self.height))
         self.rect.size = self.width, self.height
+        self.direction = False
+
+    def update(self, *args, **kwargs):
+        self.move_right(1)
+        self.move_up(1)
+        self.move_left(1)
+        self.move_bottom(1)

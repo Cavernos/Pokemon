@@ -13,6 +13,6 @@ class PlayerAction:
         if self.player.playable:
             for key, value in Container.get('inputs').items():
                 if event.key[key] and hasattr(self.player, value):
-                    self.player.move(Container.get('inputs')[key])
+                    self.player.update(Container.get('inputs')[key])
                 elif value == self.player.sprint.__name__:
                     self.player.slow()

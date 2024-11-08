@@ -1,4 +1,3 @@
-import os
 from abc import ABC
 
 import pygame.key
@@ -6,7 +5,7 @@ import pygame.key
 from app.Sprite import Sprite
 from app.Sprite.entity import Player, Pokemon
 from lib import Container
-from lib.loaders import FileLoader, LoaderFactory, LoaderInterface
+from lib.loaders import LoaderInterface
 from lib.views import TiledView
 from lib.widgets import Button
 from lib.widgets.Label import Label
@@ -43,8 +42,12 @@ class MapView(TiledView, ABC):
             self.player.obstacles = self.obstacles
 
     def update(self):
-        self.group.center(self.player.rect.center)
-        self.group.draw(self.screen)
+        if Container.exists(Sprite.__name__):
+            self.pokemon.update()
+        if True in pygame.key.get_pressed():
+            pygame.event.post(pygame.event.Event(pygame.USEREVENT, key=pygame.key.get_pressed()))
+
+    def render(self):
         if self.quit_visible:
             self.screen.blit(self.quit_menu, self.quit_menu.get_rect(center=self.screen.get_rect().center))
             self.accept_button.render()
@@ -53,8 +56,8 @@ class MapView(TiledView, ABC):
         else:
             self.accept_button.set_alpha(0)
             self.discard_button.set_alpha(0)
+        self.group.center(self.player.rect.center)
+        self.group.draw(self.screen)
         if Container.exists(Sprite.__name__):
             self.group.add(self.player)
             self.group.add(self.pokemon)
-        if True in pygame.key.get_pressed():
-            pygame.event.post(pygame.event.Event(pygame.USEREVENT, key=pygame.key.get_pressed()))

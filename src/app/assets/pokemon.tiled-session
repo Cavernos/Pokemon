@@ -3,42 +3,49 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/house1.tmx",
+    "activeFile": "maps/map.tmx",
     "expandedProjectPaths": [
         "maps",
-        "maps/tileset",
-        "."
+        ".",
+        "maps/tileset"
     ],
     "fileStates": {
+        "maps/Capture d'écran 2024-05-24 103346.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "maps/home.tmx": {
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 440,
-                "y": 306
+                "x": 439,
+                "y": 305
             }
         },
         "maps/house1.tmx": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 127.33333333333333,
-                "y": 79.66666666666666
+                "x": 127.5,
+                "y": 79.49999999999999
             }
         },
         "maps/map.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 3,
+            "expandedObjectLayers": [
+                12
+            ],
+            "scale": 3,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1217.3333333333333,
-                "y": 642.6666666666667
+                "x": 1475.8333333333333,
+                "y": 466.49999999999994
             }
         },
         "maps/pokemon_center.tmx": {
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 128,
+                "x": 128.125,
                 "y": 79.875
             }
         },
@@ -46,8 +53,8 @@
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 112,
-                "y": 64.125
+                "x": 112.125,
+                "y": 64
             }
         },
         "maps/tileset/home_back.tsx": {
@@ -66,7 +73,7 @@
             "scaleInEditor": 1
         },
         "maps/tileset/tileset4g.tsx": {
-            "scaleInDock": 1.5,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "maps/tileset/tileset_pokemon_sdk.tsx": {
@@ -79,7 +86,7 @@
         }
     },
     "last.exportedFilePath": "E:/Documents/École/ISEP/I2/S1/PTS Informatique/Pokemon/src/app/assets/maps",
-    "last.imagePath": "E:/Documents/École/ISEP/I2/S1/PTS Informatique/Pokemon/src/app/assets/maps/tileset",
+    "last.imagePath": "C:/Users/louis_dubois/Pictures/Screenshots",
     "map.height": 100,
     "map.lastUsedExportFilter": "Fichiers CSV (*.csv)",
     "map.lastUsedFormat": "tmx",
@@ -95,11 +102,12 @@
     ],
     "project": "pokemon.tiled-project",
     "recentFiles": [
-        "maps/map.tmx",
-        "maps/pokemon_center.tmx",
-        "maps/pokemon_store.tmx",
         "maps/home.tmx",
         "maps/house1.tmx",
+        "maps/pokemon_store.tmx",
+        "maps/pokemon_center.tmx",
+        "maps/map.tmx",
+        "maps/Capture d'écran 2024-05-24 103346.tsx",
         "maps/tileset/tileset4g.tsx",
         "maps/tileset/water.tsx",
         "maps/tileset/tileset_pokemon_sdk.tsx",
@@ -108,6 +116,7 @@
         "maps/tileset/indoor.tsx"
     ],
     "resizeMap.removeObjects": true,
+    "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 16,
         "width": 16

@@ -14,6 +14,9 @@ class HomeView(TiledView, ABC):
                     self.buttons.append(locate(obj.type)(screen, obj.x, obj.y, obj.width, obj.height, transparent=True))
 
     def update(self):
-        super().update()
+        ...
+
+    def render(self):
+        super().render()
         for button in self.buttons:
             button.render()

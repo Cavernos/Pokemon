@@ -18,9 +18,11 @@ class Player(Entity):
         self.playable = True
         self.feet = pygame.Rect(self.rect.x, self.rect.height + 12, self.width * 0.5, 12)
 
-    def move(self, func_name):
+    def update(self, *args, **kwargs):
+        func_name = args[0]
         old_position = [self.rect.x, self.rect.y].copy()
-        getattr(self, func_name)(1)
+        if hasattr(self, func_name):
+            getattr(self, func_name)(1)
         self.position = [self.rect.x, self.rect.y].copy()
         self.feet.midbottom = self.rect.midbottom
         if self.feet.collidelist(self.obstacles) != -1:

@@ -21,8 +21,10 @@ class ViewHandler:
     def update(self):
         if self.curent_view is not None:
             self.curent_view.update()
-        else:
-            pygame.display.get_surface().fill((0, 0, 0))
+
+    def render(self):
+        if self.curent_view is not None:
+            self.curent_view.render()
 
     def get_view(self):
         return self.curent_view
