@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="4">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="4">
  <tileset firstgid="1" source="tileset/water.tsx"/>
  <tileset firstgid="49" source="tileset/pokemon-center.tsx"/>
  <tileset firstgid="917" source="tileset/tileset4g.tsx"/>
  <tileset firstgid="21917" source="tileset/home_back.tsx"/>
- <tileset firstgid="24317" source="Capture d'écran 2024-05-24 103346.tsx"/>
  <layer id="1" name="Calque de Tuiles 1" width="60" height="40">
   <data encoding="csv">
 21917,21918,21919,21920,21921,21922,21923,21924,21925,21926,21927,21928,21929,21930,21931,21932,21933,21934,21935,21936,21937,21938,21939,21940,21941,21942,21943,21944,21945,21946,21947,21948,21949,21950,21951,21952,21953,21954,21955,21956,21957,21958,21959,21960,21961,21962,21963,21964,21965,21966,21967,21968,21969,21970,21971,21972,21973,21974,21975,21976,

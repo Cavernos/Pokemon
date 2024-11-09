@@ -3,31 +3,32 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/map.tmx",
+    "activeFile": "maps/home.tmx",
     "expandedProjectPaths": [
-        "maps",
+        "maps/tileset",
         ".",
-        "maps/tileset"
+        "maps"
     ],
     "fileStates": {
         "maps/Capture d'écran 2024-05-24 103346.tsx": {
+            "dynamicWrapping": true,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "maps/home.tmx": {
             "scale": 0.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 439,
-                "y": 305
+                "x": 434,
+                "y": 584
             }
         },
         "maps/house1.tmx": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 127.5,
-                "y": 79.49999999999999
+                "x": 238.66666666666666,
+                "y": 150.66666666666669
             }
         },
         "maps/map.tmx": {
@@ -37,15 +38,15 @@
             "scale": 3,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 1475.8333333333333,
-                "y": 466.49999999999994
+                "x": 1200,
+                "y": 799.8333333333333
             }
         },
         "maps/pokemon_center.tmx": {
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 128.125,
+                "x": 128,
                 "y": 79.875
             }
         },
@@ -53,11 +54,12 @@
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 112.125,
-                "y": 64
+                "x": 112,
+                "y": 64.125
             }
         },
         "maps/tileset/home_back.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "maps/tileset/indoor.tsx": {
@@ -103,10 +105,10 @@
     "project": "pokemon.tiled-project",
     "recentFiles": [
         "maps/home.tmx",
-        "maps/house1.tmx",
-        "maps/pokemon_store.tmx",
-        "maps/pokemon_center.tmx",
         "maps/map.tmx",
+        "maps/pokemon_center.tmx",
+        "maps/pokemon_store.tmx",
+        "maps/house1.tmx",
         "maps/Capture d'écran 2024-05-24 103346.tsx",
         "maps/tileset/tileset4g.tsx",
         "maps/tileset/water.tsx",

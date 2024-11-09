@@ -44,6 +44,8 @@ class MapView(TiledView, ABC):
     def update(self):
         if Container.exists(Sprite.__name__):
             self.pokemon.update()
+        if self.player.rect.colliderect(self.pokemon):
+            pygame.event.post(pygame.event.Event(pygame.USEREVENT + 1, pos=(self.player.rect.x, self.player.rect.y)))
         if True in pygame.key.get_pressed():
             pygame.event.post(pygame.event.Event(pygame.USEREVENT, key=pygame.key.get_pressed()))
 
