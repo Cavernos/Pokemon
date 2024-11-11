@@ -1,5 +1,7 @@
 import pygame.time
 
+from app.Battle import Battle
+from app.Battle.views.BattleView import BattleView
 from app.MainMenuModule.views import HomeView
 from app.Sprite import Sprite
 from app.Sprite.actions import PlayerAction, PokemonAction
@@ -37,10 +39,12 @@ class MapAction:
         if self.escape_press_counter > 1:
             self.escape_press_counter = 0
         if self.escape_press_counter == 1:
-            self.player.playable = False
+            if Container.exists(Sprite.__name__):
+                self.player.playable = False
             self.current_view.quit_visible = True
         else:
-            self.player.playable = True
+            if Container.exists(Sprite.__name__):
+                self.player.playable = True
             self.current_view.quit_visible = False
 
     # def cinematic(self):
@@ -52,4 +56,5 @@ class MapAction:
     #         pygame.time.wait(Container.get('clock').get_time())
     #         self.player.move_up(1)
     def on_sprite_collide(self, event):
-        print(event.pos)
+        if Container.exists(Battle.__name__):
+            self.view_handler.set_view(BattleView)

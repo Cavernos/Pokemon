@@ -76,6 +76,7 @@ class Button(Widget):
         self.image.set_alpha(value)
         if self.name is not None:
             self.text.set_alpha(value)
+
     def get_alpha(self):
         return self.image.get_alpha()
 

@@ -29,8 +29,8 @@ class Window:
         if Container.exists(HomeView.__name__):
             view_handler.set_view(Container.get(HomeView.__name__))
         while self.running:
-            view_handler.update()
             view_handler.render()
+            view_handler.update()
             self.clock.tick(Container.get('FPS'))
             for e in pygame.event.get():
                 EventListener.handle(e)

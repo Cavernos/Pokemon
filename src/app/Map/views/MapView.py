@@ -40,16 +40,24 @@ class MapView(TiledView, ABC):
             self.player = Player(71, 84)
             self.pokemon = Container.get(LoaderInterface.__name__).load_from_index(Pokemon, 1)
             self.player.obstacles = self.obstacles
+            self.group.add(self.player)
+            self.group.add(self.pokemon)
 
     def update(self):
         if Container.exists(Sprite.__name__):
             self.pokemon.update()
-        if self.player.rect.colliderect(self.pokemon):
-            pygame.event.post(pygame.event.Event(pygame.USEREVENT + 1, pos=(self.player.rect.x, self.player.rect.y)))
+            if self.player.rect.colliderect(self.pokemon):
+                pygame.event.post(pygame.event.Event(pygame.USEREVENT + 1, pos=(self.player.rect.x, self.player.rect.y)))
         if True in pygame.key.get_pressed():
             pygame.event.post(pygame.event.Event(pygame.USEREVENT, key=pygame.key.get_pressed()))
 
     def render(self):
+        if Container.exists(Sprite.__name__):
+            self.group.center(self.player.rect.center)
+            self.group.draw(self.screen)
+        else:
+            self.map_layer.center((71 * 16, 84 * 16))
+            self.map_layer.draw(self.screen, self.screen.get_rect())
         if self.quit_visible:
             self.screen.blit(self.quit_menu, self.quit_menu.get_rect(center=self.screen.get_rect().center))
             self.accept_button.render()
@@ -58,8 +66,5 @@ class MapView(TiledView, ABC):
         else:
             self.accept_button.set_alpha(0)
             self.discard_button.set_alpha(0)
-        self.group.center(self.player.rect.center)
-        self.group.draw(self.screen)
-        if Container.exists(Sprite.__name__):
-            self.group.add(self.player)
-            self.group.add(self.pokemon)
+
+
