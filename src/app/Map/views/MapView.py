@@ -32,6 +32,7 @@ class MapView(TiledView, ABC):
         self.accept_button.set_alpha(0)
         self.discard_button.set_alpha(0)
         self.quit_visible = False
+        self.hitbox_shown = False
         for objs in self.tmx_data.objectgroups:
             for obj in objs:
                 if objs.name == 'collision':
@@ -42,10 +43,11 @@ class MapView(TiledView, ABC):
             self.player.obstacles = self.obstacles
             self.group.add(self.player)
             self.group.add(self.pokemon)
+            self.entities = self.group.sprites()
 
     def update(self):
         if Container.exists(Sprite.__name__):
-            self.pokemon.update()
+            #self.pokemon.update()
             if self.player.rect.colliderect(self.pokemon):
                 pygame.event.post(pygame.event.Event(pygame.USEREVENT + 1, pos=(self.player.rect.x, self.player.rect.y)))
         if True in pygame.key.get_pressed():

@@ -20,6 +20,7 @@ class MapAction:
         self.current_view.accept_button.set_action(self.return_to_main_menu)
         self.current_view.discard_button.set_action(self.escape_menu)
         self.escape_press_counter = 0
+        self.h_press_counter = 0
         if Container.exists(Sprite.__name__):
             self.player = self.current_view.player
             self.pokemon = self.current_view.pokemon
@@ -27,7 +28,7 @@ class MapAction:
             PokemonAction()(self.pokemon)
 
     def on_key_press(self, event):
-        if event.key in Container.get('inputs'):
+        if event.key in Container.get('inputs') and event.key not in Container.get('inputs')['player']:
             if hasattr(self, Container.get('inputs')[event.key]):
                 getattr(self, Container.get('inputs')[event.key])(event.key)
 
@@ -47,6 +48,11 @@ class MapAction:
                 self.player.playable = True
             self.current_view.quit_visible = False
 
+    def show_hitbox(self, event):
+        for entity in self.current_view.entities:
+            entity.show_hitbox()
+
+
     # def cinematic(self):
     #     while self.player.rect.x <= 1328:
     #         self.player.move_right(1)
@@ -57,4 +63,5 @@ class MapAction:
     #         self.player.move_up(1)
     def on_sprite_collide(self, event):
         if Container.exists(Battle.__name__):
-            self.view_handler.set_view(BattleView)
+            print('collide')
+            #self.view_handler.set_view(BattleView)

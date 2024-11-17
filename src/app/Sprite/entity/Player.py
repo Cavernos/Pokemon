@@ -16,7 +16,7 @@ class Player(Entity):
         self.image = self.loaded_image.subsurface((0, 0, self.width, self.height))
         self.rect.size = self.width, self.height
         self.playable = True
-        self.feet = pygame.Rect(self.rect.x, self.rect.height + 12, self.width * 0.5, 12)
+        self.feet = pygame.Rect(self.x, self.y, self.width - 10, self.height * 0.5)
 
     def update(self, *args, **kwargs):
         func_name = args[0]

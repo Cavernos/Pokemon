@@ -15,23 +15,24 @@ class Pokemon(Entity):
         self.width = width // 2
         self.height = height // 4
         self.image = self.loaded_image.subsurface((0, 0, self.width, self.height))
-        self.rect.size = self.width, self.height
+        self.rect.size = self.width // 2, self.height // 2
+        self.rect.topleft = self.x + self.width // 4, self.y + self.height // 2
         self.direction = 1
 
     def update(self, *args, **kwargs):
-        if self.rect.x <= self.x + 25 and self.direction == 1:
-            if self.rect.x >= self.x + 25:
+        if self.rect.x <= self.x + 32 and self.direction == 1:
+            if self.rect.x >= self.x + 32:
                 self.direction = 2
             self.move_right(1)
-        if self.rect.y >= self.y - 25 and self.direction == 2:
-            if self.rect.y <= self.y - 25:
+        if self.rect.y >= self.y - 32 and self.direction == 2:
+            if self.rect.y <= self.y - 32:
                 self.direction = 3
             self.move_up(1)
         if self.rect.x >= self.x and self.direction == 3:
             if self.rect.x <= self.x:
                 self.direction = 4
             self.move_left(1)
-        if self.rect.y <= self.y  and self.direction == 4:
+        if self.rect.y <= self.y and self.direction == 4:
             if self.rect.y >= self.y:
                 self.direction = 1
             self.move_bottom(1)

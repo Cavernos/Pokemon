@@ -16,6 +16,7 @@ def main() -> int:
     g.add_module(Map)
     g.add_module(Sprite)
     g.add_module(Battle)
+
     g.run()
     return 0
 

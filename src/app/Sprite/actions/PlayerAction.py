@@ -11,8 +11,8 @@ class PlayerAction:
 
     def on_key_press(self, event):
         if self.player.playable:
-            for key, value in Container.get('inputs').items():
+            for key, value in Container.get('inputs')['player'].items():
                 if event.key[key] and hasattr(self.player, value):
-                    self.player.update(Container.get('inputs')[key])
+                    self.player.update(Container.get('inputs')['player'][key])
                 elif value == self.player.sprint.__name__:
                     self.player.slow()

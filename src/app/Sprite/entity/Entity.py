@@ -8,6 +8,7 @@ from lib import Container
 class Entity(pygame.sprite.Sprite):
     def __init__(self, x, y, width, height, *groups):
         super().__init__(*groups)
+
         self.number_of_sprite = 2
         self.x = x * 16
         self.y = y * 16
@@ -54,3 +55,11 @@ class Entity(pygame.sprite.Sprite):
         if self.animation_counter[counter_index] >= self.number_of_sprite:
             self.animation_counter[counter_index] = 0
         return int(self.animation_counter[counter_index])
+
+    def show_hitbox(self):
+        pygame.draw.rect(self.image, (0, 0, 0),
+                                     (0,0,
+                                      self.rect.width, self.rect.height), width=1)
+
+
+

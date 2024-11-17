@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/battle.tmx",
+    "activeFile": "maps/map.tmx",
     "expandedProjectPaths": [
-        ".",
+        "maps",
         "maps/tileset",
-        "maps"
+        "."
     ],
     "fileStates": {
         "maps/Capture d'écran 2024-05-24 103346.tsx": {
@@ -19,15 +19,15 @@
             "scale": 0.7817708333333333,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 478.40106595602924,
-                "y": 319.78680879413724
+                "x": 477.1219187208527,
+                "y": 318.5076615589607
             }
         },
         "maps/home.tmx": {
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 480,
+                "x": 342,
                 "y": 321
             }
         },
@@ -35,7 +35,7 @@
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 128,
+                "x": 119,
                 "y": 80.16666666666667
             }
         },
@@ -46,8 +46,8 @@
             "scale": 3,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 1200,
-                "y": 799.8333333333333
+                "x": 1199.6666666666665,
+                "y": 799.3333333333333
             }
         },
         "maps/pokemon_center.tmx": {
@@ -113,12 +113,12 @@
     ],
     "project": "pokemon.tiled-project",
     "recentFiles": [
-        "maps/map.tmx",
-        "maps/pokemon_center.tmx",
-        "maps/pokemon_store.tmx",
-        "maps/house1.tmx",
-        "maps/home.tmx",
         "maps/battle.tmx",
+        "maps/home.tmx",
+        "maps/house1.tmx",
+        "maps/pokemon_store.tmx",
+        "maps/pokemon_center.tmx",
+        "maps/map.tmx",
         "maps/Capture d'écran 2024-05-24 103346.tsx",
         "maps/tileset/tileset4g.tsx",
         "maps/tileset/water.tsx",
