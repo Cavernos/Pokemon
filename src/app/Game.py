@@ -26,8 +26,8 @@ class Window:
         pygame.display.set_icon(pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "img", "icon.png")))
         self.running = True
         view_handler = Container.get(ViewHandler.__name__)
-        if Container.exists(HomeView.__name__):
-            view_handler.set_view(Container.get(HomeView.__name__))
+        if Container.exists(Container.get('FIRST_VIEW').__name__):
+            view_handler.set_view(Container.get('FIRST_VIEW'))
         while self.running:
             view_handler.render()
             view_handler.update()

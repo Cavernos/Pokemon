@@ -9,9 +9,9 @@ class Button(Widget):
     def __init__(self, screen, x, y, width, height, **kwargs):
         super().__init__(screen, x, y, width, height, **kwargs)
         self.name = kwargs.get('name')
-        self.rect = pygame.Rect(x, y, width, height)
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         if self.name is not None:
-            self.text = Label(screen, x, y, width, height, name=self.name, font_weight="bold",
+            self.text = Label(screen, self.x, self.y, self.width, self.height, name=self.name, font_weight="bold",
                               font_size=self.height // 2)
             self.button = self.text.get_rect()
             self.text.set_alpha(self.bg_color[3])
@@ -27,6 +27,12 @@ class Button(Widget):
         EventListener.add_event_listener(pygame.MOUSEMOTION, self.on_hover)
         EventListener.add_event_listener(pygame.MOUSEBUTTONDOWN, self.on_click)
         #EventListener.add_event_listener(pygame.USEREVENT + 2, self.on_time_2)
+
+
+    def set_pos(self, new_pos):
+        self.text.set_pos(new_pos)
+        self.button.topleft = new_pos
+
 
     def render(self):
         self.set_alpha(255)

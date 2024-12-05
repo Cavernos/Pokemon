@@ -7,7 +7,7 @@ from app.Sprite.entity import Player, Pokemon
 from lib import Container
 from lib.loaders import LoaderInterface
 from lib.views import TiledView
-from lib.widgets import Button
+from lib.widgets import Button, Menu
 from lib.widgets.Label import Label
 
 
@@ -16,21 +16,12 @@ class MapView(TiledView, ABC):
         super().__init__(screen)
         self.map_layer.zoom = 5
         self.obstacles = []
-        self.quit_menu = pygame.Surface((300, 100))
-        self.accept_button = Button(self.screen,
-                                    self.quit_menu.get_rect(center=self.screen.get_rect().center).x,
-                                    self.quit_menu.get_rect(center=self.screen.get_rect().center).y
-                                    + self.quit_menu.get_height() - 30, 30, 30, name='yes')
-        self.discard_button = Button(self.screen,
-                                     self.quit_menu.get_rect(center=self.screen.get_rect().center).x
-                                     + self.quit_menu.get_width() - 30,
-                                     self.quit_menu.get_rect(center=self.screen.get_rect().center).y
-                                     + self.quit_menu.get_height() - 30,
-                                     30, 30, name='no')
-        self.quit_label = Label(self.quit_menu, 0, self.quit_menu.get_height() / 2 - 20, 100, 20, name='Do you want to quit ?', color='#ffffff')
-        self.quit_label.x = 1/2 * (self.quit_menu.get_width() - self.quit_label.get_rect().width)
-        self.accept_button.set_alpha(0)
-        self.discard_button.set_alpha(0)
+
+        self.accept_button = Button(self.screen,0,70, 30, 30, name='yes')
+        self.discard_button = Button(self.screen,270,70,30, 30, name='no')
+        self.quit_label = Label(self.screen, 0, 100 / 2 - 20, 100, 20, name='Do you want to quit ?', color='#ffffff')
+        self.quit_label.x = 1/2 * (300 - self.quit_label.get_rect().width)
+        self.quit_menu = Menu(self.screen, self.screen.get_rect().centerx - 150, self.screen.get_rect().centery - 50, 300, 100, self.accept_button, self.discard_button, self.quit_label)
         self.quit_visible = False
         self.hitbox_shown = False
         for objs in self.tmx_data.objectgroups:
@@ -61,10 +52,7 @@ class MapView(TiledView, ABC):
             self.map_layer.center((71 * 16, 84 * 16))
             self.map_layer.draw(self.screen, self.screen.get_rect())
         if self.quit_visible:
-            self.screen.blit(self.quit_menu, self.quit_menu.get_rect(center=self.screen.get_rect().center))
-            self.accept_button.render()
-            self.discard_button.render()
-            self.quit_label.render()
+           self.quit_menu.render()
         else:
             self.accept_button.set_alpha(0)
             self.discard_button.set_alpha(0)
