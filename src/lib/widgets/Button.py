@@ -35,7 +35,6 @@ class Button(Widget):
 
 
     def render(self):
-        self.set_alpha(255)
         if self.name is not None:
             if not self.transparent:
                 self.screen.blit(self.image, self.button)

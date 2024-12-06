@@ -22,7 +22,7 @@ class MapView(TiledView, ABC):
         self.quit_label = Label(self.screen, 0, 100 / 2 - 20, 100, 20, name='Do you want to quit ?', color='#ffffff')
         self.quit_label.x = 1/2 * (300 - self.quit_label.get_rect().width)
         self.quit_menu = Menu(self.screen, self.screen.get_rect().centerx - 150, self.screen.get_rect().centery - 50, 300, 100, self.accept_button, self.discard_button, self.quit_label)
-        self.quit_visible = False
+        self.quit_menu.set_alpha(0)
         self.hitbox_shown = False
         for objs in self.tmx_data.objectgroups:
             for obj in objs:
@@ -51,10 +51,6 @@ class MapView(TiledView, ABC):
         else:
             self.map_layer.center((71 * 16, 84 * 16))
             self.map_layer.draw(self.screen, self.screen.get_rect())
-        if self.quit_visible:
-           self.quit_menu.render()
-        else:
-            self.accept_button.set_alpha(0)
-            self.discard_button.set_alpha(0)
+        self.quit_menu.render()
 
 

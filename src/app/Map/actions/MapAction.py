@@ -42,11 +42,11 @@ class MapAction:
         if self.escape_press_counter == 1:
             if Container.exists(Sprite.__name__):
                 self.player.playable = False
-            self.current_view.quit_visible = True
+            self.current_view.quit_menu.set_alpha(255)
         else:
             if Container.exists(Sprite.__name__):
                 self.player.playable = True
-            self.current_view.quit_visible = False
+            self.current_view.quit_menu.set_alpha(0)
 
     def show_hitbox(self, event):
         for entity in self.current_view.entities:

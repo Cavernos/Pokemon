@@ -26,6 +26,7 @@ class Menu(Widget):
             if isinstance(widget, Widget):
                 widget.set_alpha(value)
 
+
     def get_width(self):
         return self.width
 
