@@ -1,8 +1,4 @@
-import os
-
 import pygame.sprite
-
-from lib import Container
 
 
 class Entity(pygame.sprite.Sprite):
@@ -60,6 +56,11 @@ class Entity(pygame.sprite.Sprite):
         pygame.draw.rect(self.image, (0, 0, 0),
                                      (0,0,
                                       self.rect.width, self.rect.height), width=1)
+
+    def display_in_inventory(self, index):
+        self.image = self.loaded_image.subsurface((0, 0, self.width, self.height))
+        dest = (self.width * index, 0)
+        pygame.display.get_surface().blit(self.image, dest)
 
 
 

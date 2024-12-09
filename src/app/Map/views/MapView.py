@@ -3,7 +3,7 @@ from abc import ABC
 import pygame.key
 
 from app.Sprite import Sprite
-from app.Sprite.entity import Player, Pokemon
+from app.Sprite.entity import Player, Pokemon, Entity
 from lib import Container
 from lib.loaders import LoaderInterface
 from lib.views import TiledView
@@ -30,17 +30,23 @@ class MapView(TiledView, ABC):
                     self.obstacles.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
         if Container.exists(Sprite.__name__):
             self.player = Player(71, 84)
-            self.pokemon = Container.get(LoaderInterface.__name__).load_from_index(Pokemon, 1)
+            self.pokemons = []
+            for i in range(4, 7):
+                self.pokemons.append(Container.get(LoaderInterface.__name__).load_from_index(Pokemon, i))
             self.player.obstacles = self.obstacles
             self.group.add(self.player)
-            self.group.add(self.pokemon)
+            for pokemon in self.pokemons:
+                self.group.add(pokemon)
             self.entities = self.group.sprites()
 
     def update(self):
         if Container.exists(Sprite.__name__):
-            #self.pokemon.update()
-            if self.player.rect.colliderect(self.pokemon):
-                pygame.event.post(pygame.event.Event(pygame.USEREVENT + 1, pos=(self.player.rect.x, self.player.rect.y)))
+            for pokemon in self.pokemons:
+                pokemon.update()
+            if self.player.rect.collidelist(self.pokemons) != -1:
+                pygame.event.post(pygame.event.Event(pygame.USEREVENT + 1,
+                                                     pos=(self.player.rect.x, self.player.rect.y)
+                                                     , pokemon=self.pokemons[self.player.rect.collidelist(self.pokemons)]))
         if True in pygame.key.get_pressed():
             pygame.event.post(pygame.event.Event(pygame.USEREVENT, key=pygame.key.get_pressed()))
 
@@ -48,6 +54,9 @@ class MapView(TiledView, ABC):
         if Container.exists(Sprite.__name__):
             self.group.center(self.player.rect.center)
             self.group.draw(self.screen)
+            for pokemon in self.player.inventory:
+                if isinstance(pokemon, Entity):
+                    pokemon.display_in_inventory(self.player.inventory.index(pokemon))
         else:
             self.map_layer.center((71 * 16, 84 * 16))
             self.map_layer.draw(self.screen, self.screen.get_rect())
