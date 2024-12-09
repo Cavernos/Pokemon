@@ -8,6 +8,18 @@ from lib import Container
 
 class Pokemon(Entity):
     def __init__(self, x, y, index, width, height, texture, shiny_texture, *groups):
+        """
+        Initialise le pokemon
+        Args:
+            x: int
+            y: int
+            index: int
+            width: int
+            height: height
+            texture: string
+            shiny_texture: string
+            *groups: tuple
+        """
         super().__init__(x, y, width, height, *groups)
         self.index = index
         self.texture, self.shiny_texture = texture, shiny_texture
@@ -20,6 +32,15 @@ class Pokemon(Entity):
         self.direction = 1
 
     def update(self, *args, **kwargs):
+        """
+        Mets à jour les coordonnées du pokemon
+        Args:
+            *args: tuple
+            **kwargs: dict
+
+        Returns:
+
+        """
         if self.rect.x <= self.x + 32 and self.direction == 1:
             if self.rect.x >= self.x + 32:
                 self.direction = 2
