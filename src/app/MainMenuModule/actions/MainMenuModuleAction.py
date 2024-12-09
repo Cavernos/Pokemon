@@ -1,5 +1,6 @@
 from app.Map import Map
 from app.Map.views import MapView
+from app.Settings import Settings
 from app.Settings.views import SettingsView
 from lib import Container
 from lib.views import ViewHandler
@@ -13,7 +14,8 @@ class MainMenuModuleAction:
         self.buttons[1].set_action(self.play)
 
     def go_to_settings(self, button):
-        self.view_handler.set_view(Container.get(SettingsView.__name__))
+        if Container.exists(Settings.__name__):
+            self.view_handler.set_view(Container.get(SettingsView.__name__))
 
     def play(self, button):
         if Container.exists(Map.__name__):

@@ -6,12 +6,13 @@ from lib import Container
 
 
 class Entity(pygame.sprite.Sprite):
-    def __init__(self, x, y, name, *groups):
+    def __init__(self, x, y, width, height, *groups):
         super().__init__(*groups)
-        self.x = x
-        self.y = y
-        self.name = name
-        self.loaded_image = pygame.image.load(os.path.join(Container.get('ASSETS'), 'entities', f'{name}.png'))
+
+        self.number_of_sprite = 2
+        self.x = x * 16
+        self.y = y * 16
+        self.loaded_image = pygame.Surface((width, height))
         self.width = self.loaded_image.get_width()
         self.height = self.loaded_image.get_height()
         self.image = self.loaded_image
@@ -19,6 +20,7 @@ class Entity(pygame.sprite.Sprite):
         self.animation_counter = [0 for i in range(4)]
         self.position = [x, y]
         self.obstacles = []
+        self.playable = False
         self.velocity = 1
 
     def move_left(self, x):
@@ -50,6 +52,14 @@ class Entity(pygame.sprite.Sprite):
 
     def play_anim(self, counter_index):
         self.animation_counter[counter_index] += (self.velocity / 10)
-        if self.animation_counter[counter_index] >= 4:
+        if self.animation_counter[counter_index] >= self.number_of_sprite:
             self.animation_counter[counter_index] = 0
         return int(self.animation_counter[counter_index])
+
+    def show_hitbox(self):
+        pygame.draw.rect(self.image, (0, 0, 0),
+                                     (0,0,
+                                      self.rect.width, self.rect.height), width=1)
+
+
+

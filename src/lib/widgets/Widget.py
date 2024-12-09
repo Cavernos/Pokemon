@@ -13,8 +13,18 @@ class Widget:
         self.color = pygame.Color(kwargs.get('color')) if kwargs.get('color') is not None else (0, 0, 0, 255)
         self.animation = None
 
+
+    def get_pos(self):
+        return self.x, self.y
+
+    def set_pos(self, value):
+        self.x, self.y = value
+
     def render(self):
         ...
 
     def set_animation(self, animation):
         self.animation = animation
+
+    def set_alpha(self, integer):
+        ...

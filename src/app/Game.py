@@ -1,8 +1,6 @@
 import logging
 import os.path
 import sys
-import tomllib
-from pathlib import Path
 from typing import Type, Self
 
 import pygame
@@ -17,8 +15,7 @@ from lib.views import ViewHandler
 
 class Window:
     def __init__(self):
-        with open(os.path.join(Path(__file__).parent.parent.parent, "pyproject.toml"), "rb") as file:
-            self.title: str = tomllib.load(file)['project']['name']
+        self.title: str = 'Pokemon'
         self.clock = pygame.time.Clock()
         self.running = False
 
@@ -29,9 +26,10 @@ class Window:
         pygame.display.set_icon(pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", "img", "icon.png")))
         self.running = True
         view_handler = Container.get(ViewHandler.__name__)
-        if Container.exists(HomeView.__name__):
-            view_handler.set_view(Container.get(HomeView.__name__))
+        if Container.exists(Container.get('FIRST_VIEW').__name__):
+            view_handler.set_view(Container.get('FIRST_VIEW'))
         while self.running:
+            view_handler.render()
             view_handler.update()
             self.clock.tick(Container.get('FPS'))
             for e in pygame.event.get():

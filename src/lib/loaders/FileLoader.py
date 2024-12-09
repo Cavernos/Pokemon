@@ -13,4 +13,9 @@ class FileLoader:
 
     def load_from_json(self, classType, definition):
         with open(definition, 'rb') as file:
-            return classType(json.loads(file.read()))
+            return classType(**json.loads(file.read()))
+
+    def load_from_index(self, class_type, index):
+        for key, value in FileLoader.json_file_path.items():
+            if f"{index:03d}" in key:
+                return self.load_from_json(class_type, value)

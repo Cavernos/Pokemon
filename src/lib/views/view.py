@@ -16,13 +16,20 @@ class View:
 
     @abstractmethod
     def update(self):
+        ...
+
+    @abstractmethod
+    def render(self):
         self.screen.fill((0, 0, 0))
 
     def __del__(self):
         for button in self.buttons:
             EventListener.remove_event_listener(pygame.MOUSEMOTION, button.on_hover)
-        EventListener.remove_event_listener(pygame.MOUSEBUTTONDOWN)
+            EventListener.remove_event_listener(pygame.MOUSEBUTTONDOWN, button.on_click)
+        EventListener.remove_event_listener(pygame.KEYDOWN)
         pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
 
 
 class TiledView(View):
@@ -40,10 +47,13 @@ class TiledView(View):
             map_data = pyscroll.data.TiledMapData(self.tmx_data)
             self.size = self.tmx_data.width * self.tmx_data.tilewidth, self.tmx_data.height * self.tmx_data.tileheight
             self.map_layer = pyscroll.BufferedRenderer(map_data, self.size)
-            self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=8)
+            self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=5)
 
     def update(self):
+        ...
+
+    def render(self):
         if self.tmx_data is None:
-            super().update()
+            super().render()
         else:
             self.group.draw(self.screen)

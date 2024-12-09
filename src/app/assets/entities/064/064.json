@@ -1,0 +1,9 @@
+{
+    "index": 64,
+    "x": 1,
+    "y": 60,
+    "width": 64,
+    "height": 128,
+    "texture": "064.png",
+    "shiny_texture": "064_S.png"
+}

@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+from app.Map.views import MapView
 from lib.Container import factory
 from lib.events import EventListener
 from lib.loaders import LoaderFactory, LoaderInterface
@@ -16,7 +17,8 @@ config = {
     LoaderInterface.__name__: factory(LoaderFactory()),
     ViewHandler.__name__: ViewHandler(),
     EventListener.__name__: EventListener(),
-    "views": {}
+    "views": {},
+    "FIRST_VIEW": MapView
 }
 
 

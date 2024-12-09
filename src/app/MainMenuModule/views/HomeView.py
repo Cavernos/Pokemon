@@ -11,9 +11,12 @@ class HomeView(TiledView, ABC):
         for objs in self.tmx_data.objectgroups:
             for obj in objs:
                 if isinstance(locate(obj.type), Button.__class__):
-                    self.buttons.append(locate(obj.type)(screen, obj.x, obj.y, obj.width, obj.height, transparent=False))
+                    self.buttons.append(locate(obj.type)(screen, obj.x, obj.y, obj.width, obj.height, transparent=True))
 
     def update(self):
-        super().update()
+        ...
+
+    def render(self):
+        super().render()
         for button in self.buttons:
             button.render()

@@ -9,9 +9,9 @@ class Button(Widget):
     def __init__(self, screen, x, y, width, height, **kwargs):
         super().__init__(screen, x, y, width, height, **kwargs)
         self.name = kwargs.get('name')
-        self.rect = pygame.Rect(x, y, width, height)
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         if self.name is not None:
-            self.text = Label(screen, x, y, width, height, name=self.name, font_weight="bold",
+            self.text = Label(screen, self.x, self.y, self.width, self.height, name=self.name, font_weight="bold",
                               font_size=self.height // 2)
             self.button = self.text.get_rect()
             self.text.set_alpha(self.bg_color[3])
@@ -26,7 +26,13 @@ class Button(Widget):
         self.action = None
         EventListener.add_event_listener(pygame.MOUSEMOTION, self.on_hover)
         EventListener.add_event_listener(pygame.MOUSEBUTTONDOWN, self.on_click)
-        EventListener.add_event_listener(pygame.USEREVENT + 2, self.on_time_2)
+        #EventListener.add_event_listener(pygame.USEREVENT + 2, self.on_time_2)
+
+
+    def set_pos(self, new_pos):
+        self.text.set_pos(new_pos)
+        self.button.topleft = new_pos
+
 
     def render(self):
         if self.name is not None:
@@ -38,12 +44,11 @@ class Button(Widget):
                 self.screen.blit(self.image, self.button.topleft)
 
     def on_click(self, event):
-        if self.action is not None and self.button.collidepoint(event.pos):
-            self.fade_out(1000)
+        if self.action is not None and self.button.collidepoint(event.pos) and self.get_alpha() != 0:
             self.action(self)
 
     def on_hover(self, event):
-        if self.button.collidepoint(event.pos) and not self.is_hover:
+        if self.button.collidepoint(event.pos) and not self.is_hover and self.get_alpha() != 0:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
             self.is_hover = True
         if not self.button.collidepoint(event.pos) and self.is_hover:
@@ -76,6 +81,9 @@ class Button(Widget):
         self.image.set_alpha(value)
         if self.name is not None:
             self.text.set_alpha(value)
+
+    def get_alpha(self):
+        return self.image.get_alpha()
 
     def on_time(self, event):
         self.image.set_alpha(self.image.get_alpha() + 1)

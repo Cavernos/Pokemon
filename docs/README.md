@@ -62,5 +62,4 @@ class Player():
 ```
 
 # Other links
-1234
 [How to use lib](./LIB_DOC.md)
