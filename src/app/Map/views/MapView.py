@@ -1,3 +1,4 @@
+import random
 from abc import ABC
 
 import pygame.key
@@ -31,8 +32,11 @@ class MapView(TiledView, ABC):
         if Container.exists(Sprite.__name__):
             self.player = Player(71, 84)
             self.pokemons = []
-            for i in range(4, 7):
-                self.pokemons.append(Container.get(LoaderInterface.__name__).load_from_index(Pokemon, i))
+            pokemon_choice = random.randint(1, 153)
+            for i in range(pokemon_choice):
+                pokemon = Container.get(LoaderInterface.__name__).load_from_index(Pokemon, i)
+                if pokemon is not None:
+                    self.pokemons.append(pokemon)
             self.player.obstacles = self.obstacles
             self.group.add(self.player)
             for pokemon in self.pokemons:

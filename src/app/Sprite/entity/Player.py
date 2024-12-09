@@ -37,5 +37,6 @@ class Player(Entity):
             self.feet.midbottom = self.rect.midbottom
 
     def add_to_inventory(self, item):
-        if item not in self.inventory:
+        """Ajout d'un pokemon dans l'inventaire"""
+        if item not in self.inventory and len(self.inventory) < 6:
             self.inventory.append(item)

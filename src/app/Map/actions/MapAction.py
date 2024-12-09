@@ -58,7 +58,8 @@ class MapAction:
 
     def on_sprite_collide(self, event):
         self.player.add_to_inventory(event.pokemon)
-        self.current_view.group.remove(event.pokemon)
+        if event.pokemon in self.player.inventory:
+            self.current_view.group.remove(event.pokemon)
         # if Container.exists(Battle.__name__):
         #     print('collide')
         #     #self.view_handler.set_view(BattleView)
