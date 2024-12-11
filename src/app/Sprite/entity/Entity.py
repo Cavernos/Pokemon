@@ -123,19 +123,4 @@ class Entity(pygame.sprite.Sprite):
                                      (0,0,
                                       self.rect.width, self.rect.height), width=1)
 
-    def display_in_inventory(self, index):
-        """
-        Affiche l'inventaire en haut a gauche
-
-        Args:
-            index: int
-
-        Returns:
-
-        """
-        self.image = self.loaded_image.subsurface((0, 0, self.width, self.height))
-        dest = (self.width * index, 0)
-        pygame.display.get_surface().blit(self.image, dest)
-
-
 

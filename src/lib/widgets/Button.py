@@ -8,6 +8,7 @@ from lib.widgets.Widget import Widget
 class Button(Widget):
     def __init__(self, screen, x, y, width, height, **kwargs):
         super().__init__(screen, x, y, width, height, **kwargs)
+        self.index = kwargs.get('index')
         self.name = kwargs.get('name')
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         if self.name is not None:
@@ -20,8 +21,11 @@ class Button(Widget):
             self.button.h = self.rect.h
         else:
             self.button = self.rect
-        self.image = pygame.Surface(self.button.size, pygame.SRCALPHA)
-        self.image.fill(self.bg_color)
+        if isinstance(kwargs.get('image'), pygame.Surface):
+            self.image = kwargs.get('image')
+        else:
+            self.image = pygame.Surface(self.button.size, pygame.SRCALPHA)
+            self.image.fill(self.bg_color)
         self.is_hover = False
         self.action = None
         EventListener.add_event_listener(pygame.MOUSEMOTION, self.on_hover)
@@ -30,7 +34,8 @@ class Button(Widget):
 
 
     def set_pos(self, new_pos):
-        self.text.set_pos(new_pos)
+        if hasattr(self, 'text'):
+            self.text.set_pos(new_pos)
         self.button.topleft = new_pos
 
 

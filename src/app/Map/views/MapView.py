@@ -32,8 +32,8 @@ class MapView(TiledView, ABC):
         if Container.exists(Sprite.__name__):
             self.player = Player(71, 84)
             self.pokemons = []
-            pokemon_choice = random.randint(1, 153)
-            for i in range(pokemon_choice):
+            pokemon_choice = random.randint(1, 153), random.randint(1, 153)
+            for i in range(min(pokemon_choice), max(pokemon_choice)):
                 pokemon = Container.get(LoaderInterface.__name__).load_from_index(Pokemon, i)
                 if pokemon is not None:
                     self.pokemons.append(pokemon)
@@ -58,9 +58,7 @@ class MapView(TiledView, ABC):
         if Container.exists(Sprite.__name__):
             self.group.center(self.player.rect.center)
             self.group.draw(self.screen)
-            for pokemon in self.player.inventory:
-                if isinstance(pokemon, Entity):
-                    pokemon.display_in_inventory(self.player.inventory.index(pokemon))
+            self.player.show_inventory()
         else:
             self.map_layer.center((71 * 16, 84 * 16))
             self.map_layer.draw(self.screen, self.screen.get_rect())

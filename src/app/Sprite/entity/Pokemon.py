@@ -27,6 +27,7 @@ class Pokemon(Entity):
         self.width = width // 2
         self.height = height // 4
         self.image = self.loaded_image.subsurface((0, 0, self.width, self.height))
+        self.back_image = self.image
         self.rect.size = self.width // 2, self.height // 2
         self.rect.topleft = self.x + self.width // 4, self.y + self.height // 2
         self.direction = 1

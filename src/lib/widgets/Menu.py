@@ -33,6 +33,15 @@ class Menu(Widget):
     def get_height(self):
         return self.height
 
+    def add_widget(self, widget):
+        if isinstance(widget, Widget) and widget not in self.widgets:
+            self.widgets.append(widget)
+        else:
+            del widget
+    def remove_widget(self, widget):
+        if widget in self.widgets:
+            self.widgets.remove(widget)
+
     def get_rect(self, **kwargs):
         self.background.get_rect(**kwargs)
 
