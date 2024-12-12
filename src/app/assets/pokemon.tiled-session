@@ -20,23 +20,23 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 480.3197868087941,
-                "y": 320.42638241172546
+                "y": 319.7868087941373
             }
         },
         "maps/home.tmx": {
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 309,
-                "y": 319
+                "x": 307,
+                "y": 320
             }
         },
         "maps/house1.tmx": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 115.83333333333331,
-                "y": 79.83333333333331
+                "x": 115.83333333333333,
+                "y": 79.99999999999999
             }
         },
         "maps/map.tmx": {
@@ -44,18 +44,18 @@
                 12
             ],
             "scale": 1.5,
-            "selectedLayer": 6,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1139,
-                "y": 1083
+                "x": 1215,
+                "y": 1458.3333333333333
             }
         },
         "maps/pokemon_center.tmx": {
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 119.625,
-                "y": 79.875
+                "x": 126.125,
+                "y": 80
             }
         },
         "maps/pokemon_store.tmx": {
@@ -63,7 +63,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 112.125,
-                "y": 63.875
+                "y": 64
             }
         },
         "maps/tileset/home_back.tsx": {
@@ -75,7 +75,7 @@
             "scaleInEditor": 1
         },
         "maps/tileset/interieur1.tsx": {
-            "scaleInDock": 2,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "maps/tileset/pokemon-center.tsx": {
@@ -83,7 +83,7 @@
             "scaleInEditor": 1
         },
         "maps/tileset/tileset4g.tsx": {
-            "scaleInDock": 0.5,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "maps/tileset/tileset_pokemon_sdk.tsx": {

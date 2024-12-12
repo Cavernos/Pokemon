@@ -18,38 +18,19 @@ class MapAction:
         self.current_view.discard_button.set_action(self.escape_menu)
         self.escape_press_counter = 0
         self.h_press_counter = 0
-        
         if Container.exists(Sprite.__name__):
             self.player = self.current_view.player
             PlayerAction()(self.player)
 
     def on_key_press(self, event):
-        """
-        Run a function according to the button clicked
-
-        Args:
-            event (Event): event happened
-        """
         if event.key in Container.get('inputs') and event.key not in Container.get('inputs')['player']:
             if hasattr(self, Container.get('inputs')[event.key]):
                 getattr(self, Container.get('inputs')[event.key])(event.key)
 
     def return_to_main_menu(self, button):
-        """
-        Function to return to the main menu
-
-        Args:
-            button (Button): button clicked
-        """
         self.view_handler.set_view(HomeView)
 
     def escape_menu(self, button):
-        """
-        Function to display the menu when 'escape' pressed
-
-        Args:
-            button (Button): button clicked
-        """
         self.escape_press_counter += 1
         if self.escape_press_counter > 1:
             self.escape_press_counter = 0
@@ -63,12 +44,6 @@ class MapAction:
             self.current_view.quit_menu.set_alpha(0)
 
     def show_hitbox(self, event):
-        """
-        Display hitboxes (debugging)
-
-        Args:
-            event (Event): event happened
-        """
         for entity in self.current_view.entities:
             entity.show_hitbox()
 
@@ -82,12 +57,6 @@ class MapAction:
     #         self.player.move_up(1)
 
     def on_sprite_collide(self, event):
-        """
-        What to do when collided
-
-        Args:
-            event (Event): event happened
-        """
         self.player.add_to_inventory(event.pokemon)
         if event.pokemon in self.player.inventory:
             self.current_view.group.remove(event.pokemon)

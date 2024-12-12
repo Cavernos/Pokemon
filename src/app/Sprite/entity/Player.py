@@ -4,6 +4,7 @@ import pygame
 
 from app.Sprite.entity import Entity
 from lib import Container
+from lib.widgets import Menu, Button
 
 
 class Player(Entity):
@@ -22,6 +23,7 @@ class Player(Entity):
         self.feet = pygame.Rect(self.x, self.y, self.width - 10, self.height * 0.5)  # Collision avec les pied du joueur
         # inventaire du joueur
         self.inventory = []
+        self.inventory_menu = Menu(pygame.display.get_surface(), 0, 0, 192, 32)
 
     # Update actualise les mouvements du joueur
     def update(self, *args, **kwargs):
@@ -40,3 +42,22 @@ class Player(Entity):
         """Ajout d'un pokemon dans l'inventaire"""
         if item not in self.inventory and len(self.inventory) < 6:
             self.inventory.append(item)
+
+    def remove_from_inventory(self, item):
+        for pokemon in self.inventory:
+            if pokemon.index == item.index:
+                self.inventory.remove(pokemon)
+        self.inventory_menu.remove_widget(item)
+        del item
+
+    def show_inventory(self):
+        screen = pygame.display.get_surface()
+        if self.playable:
+            if len(self.inventory_menu.widgets) != len(self.inventory):
+                self.inventory_menu.widgets.clear()
+                for i in range(len(self.inventory)):
+                    pokemon = self.inventory[i]
+                    button = Button(screen, pokemon.width*i, 0, pokemon.width, pokemon.height, image=pokemon.back_image, index=pokemon.index)
+                    button.set_action(self.remove_from_inventory)
+                    self.inventory_menu.add_widget(button)
+        self.inventory_menu.render()
