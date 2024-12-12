@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="14">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="16">
  <tileset firstgid="1" source="tileset/indoor.tsx"/>
  <tileset firstgid="4793" source="tileset/interieur1.tsx"/>
  <tileset firstgid="9417" source="tileset/tileset4g.tsx"/>
@@ -37,9 +37,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,3586,3590,3591,3592,8794,3556,3557,3558,0,0,0,0,
 0,0,0,0,3594,3598,3599,3600,8802,3564,3565,3566,0,0,0,0,
-0,0,0,0,3655,0,0,3656,0,4014,4015,4016,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,3663,3689,3691,3664,0,4022,4023,4024,0,0,0,0,
-0,0,0,0,3655,3697,3699,3656,0,0,0,0,0,0,0,0,
+0,0,0,0,0,3697,3699,0,0,0,0,0,0,0,0,0,
 0,0,0,0,3663,3705,3707,3664,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,4865,4866,0,0,0,0,0
@@ -59,6 +59,20 @@
 0,0,0,6550,6551,6551,6551,6551,6551,0,0,6551,6552,0,0,0
 </data>
  </layer>
+ <layer id="12" name="top" width="16" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,3655,0,0,3656,0,4014,4015,4016,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,3655,0,0,2147487303,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
  <objectgroup id="9" name="collision">
   <object id="1" type="collision" x="0" y="0" width="64" height="160"/>
   <object id="2" type="collision" x="192" y="0" width="64" height="160"/>
@@ -73,5 +87,10 @@
   <object id="11" type="collision" x="112" y="112" width="16" height="16"/>
   <object id="13" type="collision" x="128" y="59" width="64" height="5"/>
  </objectgroup>
- <objectgroup id="11" name="tp"/>
+ <objectgroup id="11" name="tp">
+  <object id="14" name="tp_house1_in_ext" x="147.5" y="155.25" width="25" height="4.5"/>
+  <object id="15" name="tp_house1_ext_in" x="152.75" y="136">
+   <point/>
+  </object>
+ </objectgroup>
 </map>
