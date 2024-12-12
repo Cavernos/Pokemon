@@ -5,9 +5,9 @@
     },
     "activeFile": "maps/map.tmx",
     "expandedProjectPaths": [
-        "maps/tileset",
+        ".",
         "maps",
-        "."
+        "maps/tileset"
     ],
     "fileStates": {
         "maps/Capture d'écran 2024-05-24 103346.tsx": {
@@ -19,51 +19,51 @@
             "scale": 0.7817708333333333,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 479.68021319120584,
-                "y": 320.4263824117255
+                "x": 480.3197868087941,
+                "y": 319.7868087941373
             }
         },
         "maps/home.tmx": {
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 342,
-                "y": 321
+                "x": 307,
+                "y": 320
             }
         },
         "maps/house1.tmx": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 119,
-                "y": 80.16666666666667
+                "x": 115.83333333333333,
+                "y": 79.99999999999999
             }
         },
         "maps/map.tmx": {
             "expandedObjectLayers": [
                 12
             ],
-            "scale": 4,
-            "selectedLayer": 10,
+            "scale": 1.5,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1152.5,
-                "y": 1120.75
+                "x": 1215,
+                "y": 1458.3333333333333
             }
         },
         "maps/pokemon_center.tmx": {
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 128,
-                "y": 79.875
+                "x": 126.125,
+                "y": 80
             }
         },
         "maps/pokemon_store.tmx": {
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 112,
-                "y": 64.125
+                "x": 112.125,
+                "y": 64
             }
         },
         "maps/tileset/home_back.tsx": {

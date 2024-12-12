@@ -47,7 +47,7 @@ class TiledView(View):
             map_data = pyscroll.data.TiledMapData(self.tmx_data)
             self.size = self.tmx_data.width * self.tmx_data.tilewidth, self.tmx_data.height * self.tmx_data.tileheight
             self.map_layer = pyscroll.BufferedRenderer(map_data, self.size)
-            self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=5)
+            self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=6)
 
     def update(self):
         ...
