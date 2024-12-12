@@ -1,7 +1,7 @@
 import pygame
 
 from lib import Container
-from lib.events import EventListener
+from lib.events import EventListener, Event
 
 
 class PlayerAction:
@@ -16,7 +16,7 @@ class PlayerAction:
 
         """
         self.player = args[0]
-        EventListener.add_event_listener(pygame.USEREVENT, self.on_key_press)
+        EventListener.add_event_listener(Event.KEY_PRESS, self.on_key_press)
         EventListener.add_event_listener(pygame.KEYDOWN, self.on_key_down)
 
     def on_key_press(self, event):

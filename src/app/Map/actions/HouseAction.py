@@ -1,8 +1,7 @@
-import pygame.time
-
+import pygame
 
 from app.Map.actions.GeneralAction import GeneralAction
-from app.Map.views import HouseView, MapView
+from app.Map.views import MapView, HouseView
 from app.Sprite import Sprite
 from app.Sprite.actions import PlayerAction
 from lib import Container
@@ -10,12 +9,11 @@ from lib.events import EventListener, Event
 from lib.views import ViewHandler
 
 
-class MapAction(GeneralAction):
+class HouseAction(GeneralAction):
     def __call__(self, *args, **kwargs):
         self.view_handler = Container.get(ViewHandler.__name__)
         self.current_view = self.view_handler.get_view()
         EventListener.add_event_listener(pygame.KEYDOWN, self.on_key_press)
-        EventListener.add_event_listener(Event.COLLIDE, self.on_sprite_collide)
         EventListener.add_event_listener(Event.TP, self.on_house_door_collide)
         self.current_view.accept_button.set_action(self.return_to_main_menu)
         self.current_view.discard_button.set_action(self.escape_menu)
@@ -25,18 +23,8 @@ class MapAction(GeneralAction):
             self.player = self.current_view.player
             PlayerAction()(self.player)
 
-
-    def on_sprite_collide(self, event):
-        self.player.add_to_inventory(event.pokemon)
-        if event.pokemon in self.player.inventory:
-            self.current_view.group.remove(event.pokemon)
-        # if Container.exists(Battle.__name__):
-        #     print('collide')
-        #     #self.view_handler.set_view(BattleView)
-
     def on_house_door_collide(self, event):
-        if isinstance(self.current_view, MapView):
+        if isinstance(self.current_view, HouseView):
+            self.player.set_pos(event.pos)
             Container.set('player', self.player)
-            self.view_handler.set_view(HouseView)
-
-
+            self.view_handler.set_view(MapView)

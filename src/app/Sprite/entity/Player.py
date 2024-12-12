@@ -56,7 +56,6 @@ class Player(Entity):
         del item
 
     def show_inventory(self):
-
         screen = pygame.display.get_surface()
         if self.playable:
             self.inventory_menu.set_alpha(255)

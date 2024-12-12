@@ -9,4 +9,4 @@ class MainMenuModule(Module):
 
     def __init__(self):
         super().__init__()
-        self.action = MainMenuModuleAction()
+        self.home_action = MainMenuModuleAction()

@@ -1,11 +1,12 @@
 import random
 from abc import ABC
 
-import pygame.key
+import pygame
 
 from app.Sprite import Sprite
 from app.Sprite.entity import Player, Pokemon
 from lib import Container
+from lib.events import Event
 from lib.loaders import LoaderInterface
 from lib.views import TiledView
 from lib.widgets import Button, Menu
@@ -16,8 +17,7 @@ class MapView(TiledView, ABC):
     def __init__(self, screen):
         super().__init__(screen)
         self.map_layer.zoom = 5
-        self.obstacles = []
-        self.spawn_points = []
+        self.objects = {}
 
         self.accept_button = Button(self.screen,0,70, 30, 30, name='yes')
         self.discard_button = Button(self.screen,270,70,30, 30, name='no')
@@ -28,16 +28,17 @@ class MapView(TiledView, ABC):
         self.hitbox_shown = False
 
         for objs in self.tmx_data.objectgroups:
+            self.objects[objs.name] = []
             for obj in objs:
-                if objs.name == 'collision':
-                    self.obstacles.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
-                if objs.name == 'spawn_pokemon':
-                    self.spawn_points.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+                self.objects[objs.name].append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+
+
         if Container.exists(Sprite.__name__):
-            self.player = Player(71, 84)
+            self.player = Container.get('player') if isinstance(Container.get('player'), Player) else Player(71, 84)
+            Container.delete('player')
             self.pokemons = []
             self.generate_pokemon()
-            self.player.obstacles = self.obstacles
+            self.player.obstacles = self.objects['collision']
             self.group.add(self.player)
             self.entities = self.group.sprites()
 
@@ -46,11 +47,15 @@ class MapView(TiledView, ABC):
             for pokemon in self.pokemons:
                 pokemon.update()
             if self.player.rect.collidelist(self.pokemons) != -1:
-                pygame.event.post(pygame.event.Event(pygame.USEREVENT + 1,
+                pygame.event.post(pygame.event.Event(Event.COLLIDE,
                                                      pos=(self.player.rect.x, self.player.rect.y)
                                                      , pokemon=self.pokemons[self.player.rect.collidelist(self.pokemons)]))
+            if self.player.rect.collidelist(self.objects['tp']) != -1:
+                pygame.event.post(pygame.event.Event(Event.TP, pos=(self.player.rect.x, self.player.rect.y),
+                                                        house=self.objects['tp'][self.player.rect.collidelist(self.objects['tp'])]))
+
         if True in pygame.key.get_pressed():
-            pygame.event.post(pygame.event.Event(pygame.USEREVENT, key=pygame.key.get_pressed()))
+            pygame.event.post(pygame.event.Event(Event.KEY_PRESS, key=pygame.key.get_pressed()))
 
     def render(self):
         if Container.exists(Sprite.__name__):
@@ -72,7 +77,7 @@ class MapView(TiledView, ABC):
         self.pokemons = []
         #pokemon_choice = random.randint(1, 153), random.randint(1, 153)
         for i in range(153):
-            spawn_zone = random.choice(self.spawn_points)
+            spawn_zone = random.choice(self.objects['spawn_pokemon'])
             spawn_coords = random.randint(spawn_zone.x, spawn_zone.x + spawn_zone.width) // 16, random.randint(spawn_zone.y,
                                                                                                          spawn_zone.y + spawn_zone.height) // 16
             pokemon = Container.get(LoaderInterface.__name__).load_from_index(Pokemon, i, x=spawn_coords[0], y=spawn_coords[1])
