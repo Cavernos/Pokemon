@@ -59,11 +59,11 @@
                 12,
                 13
             ],
-            "scale": 1.5,
+            "scale": 5.5,
             "selectedLayer": 10,
             "viewCenter": {
-                "x": 1127.3333333333333,
-                "y": 1304
+                "x": 1295.818181818182,
+                "y": 676.909090909091
             }
         },
         "maps/pokemon_center.tmx": {
@@ -75,11 +75,14 @@
             }
         },
         "maps/pokemon_store.tmx": {
-            "scale": 4,
-            "selectedLayer": 2,
+            "expandedObjectLayers": [
+                7
+            ],
+            "scale": 16,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 111.5,
-                "y": 63.75
+                "x": 112.6875,
+                "y": 106.5625
             }
         },
         "maps/pokemoncenter.tmx": {
@@ -137,18 +140,18 @@
     ],
     "project": "pokemon.tiled-project",
     "recentFiles": [
+        "maps/pokemoncenter.tmx",
+        "maps/pokemon_store.tmx",
         "maps/house.tmx",
         "maps/house1.tmx",
         "maps/pokemon_center.tmx",
         "maps/battle.tmx",
         "maps/home.tmx",
-        "maps/pokemon_store.tmx",
         "maps/map.tmx",
         "maps/Capture d'écran 2024-05-24 103346.tsx",
         "maps/tileset/tileset4g.tsx",
         "maps/tileset/water.tsx",
-        "maps/tileset/tileset_pokemon_sdk.tsx",
-        "maps/tileset/pokemon-center.tsx"
+        "maps/tileset/tileset_pokemon_sdk.tsx"
     ],
     "resizeMap.removeObjects": true,
     "tileset.lastUsedFormat": "tsx",

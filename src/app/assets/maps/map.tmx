@@ -1003,7 +1003,7 @@
   <object id="66" name="house5" x="1183.75" y="1450.81" width="16.4375" height="18.1534"/>
   <object id="67" name="house4" x="1133.86" y="1325.94" width="19.4545" height="17.9432"/>
   <object id="76" name="house1" x="1151.04" y="639.408" width="17.9565" height="10.0934"/>
-  <object id="77" name="pokemon_store" x="1310.88" y="637.813" width="18.25" height="6.6875"/>
+  <object id="77" name="pokemon_store" x="1310.88" y="637.813" width="18.25" height="14.6875"/>
   <object id="78" name="house2" x="1326.91" y="798.522" width="18.3043" height="14.1848"/>
   <object id="79" x="1334.63" y="814.125" width="0.125" height="0.125"/>
  </objectgroup>

@@ -12,3 +12,4 @@ class Map(Module):
         self.map_action = MapAction()
         self.house_action = HouseAction()
         self.pokemon_center_action = HouseAction()
+        self.pokemon_store_action = HouseAction()

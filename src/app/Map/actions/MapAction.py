@@ -2,7 +2,7 @@ import pygame.time
 
 
 from app.Map.actions.GeneralAction import GeneralAction
-from app.Map.views import HouseView, MapView
+from app.Map.views import HouseView, MapView, PokemonStoreView
 from app.Map.views.PokemonCenterView import PokemonCenterView
 from app.Sprite import Sprite
 from app.Sprite.actions import PlayerAction
@@ -42,6 +42,8 @@ class MapAction(GeneralAction):
             Container.set('pokemon', self.pokemons)
             if 'house' in event.house:
                 self.view_handler.set_view(HouseView)
+            elif 'pokemon_store' in event.house:
+                self.view_handler.set_view(PokemonStoreView)
             else:
                 self.view_handler.set_view(PokemonCenterView)
 

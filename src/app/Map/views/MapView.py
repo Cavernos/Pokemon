@@ -62,7 +62,6 @@ class MapView(TiledView, ABC):
             tp_list = list(self.objects['tp'].values())
             if self.player.feet.collidelist(tp_list) != -1:
                 collided_house = tp_list[self.player.feet.collidelist(list(self.objects['tp'].values()))]
-                print('collide')
                 pygame.event.post(pygame.event.Event(Event.TP, pos=(self.player.rect.x, self.player.rect.y),
                                                     house=list(self.objects['tp'].keys())[tp_list.index(collided_house)]))
 
