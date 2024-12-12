@@ -5,9 +5,9 @@
     },
     "activeFile": "maps/map.tmx",
     "expandedProjectPaths": [
+        ".",
         "maps",
-        "maps/tileset",
-        "."
+        "maps/tileset"
     ],
     "fileStates": {
         "maps/Capture d'écran 2024-05-24 103346.tsx": {
@@ -19,42 +19,42 @@
             "scale": 0.7817708333333333,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 477.1219187208527,
-                "y": 318.5076615589607
+                "x": 480.3197868087941,
+                "y": 320.42638241172546
             }
         },
         "maps/home.tmx": {
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 342,
-                "y": 321
+                "x": 309,
+                "y": 319
             }
         },
         "maps/house1.tmx": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 119,
-                "y": 80.16666666666667
+                "x": 115.83333333333331,
+                "y": 79.83333333333331
             }
         },
         "maps/map.tmx": {
             "expandedObjectLayers": [
                 12
             ],
-            "scale": 3,
-            "selectedLayer": 8,
+            "scale": 1.5,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1199.6666666666665,
-                "y": 799.3333333333333
+                "x": 1139,
+                "y": 1083
             }
         },
         "maps/pokemon_center.tmx": {
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 128,
+                "x": 119.625,
                 "y": 79.875
             }
         },
@@ -62,8 +62,8 @@
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 112,
-                "y": 64.125
+                "x": 112.125,
+                "y": 63.875
             }
         },
         "maps/tileset/home_back.tsx": {
@@ -75,7 +75,7 @@
             "scaleInEditor": 1
         },
         "maps/tileset/interieur1.tsx": {
-            "scaleInDock": 1.5,
+            "scaleInDock": 2,
             "scaleInEditor": 1
         },
         "maps/tileset/pokemon-center.tsx": {
@@ -83,7 +83,7 @@
             "scaleInEditor": 1
         },
         "maps/tileset/tileset4g.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.5,
             "scaleInEditor": 1
         },
         "maps/tileset/tileset_pokemon_sdk.tsx": {
