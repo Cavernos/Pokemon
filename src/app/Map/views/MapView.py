@@ -4,7 +4,7 @@ from abc import ABC
 import pygame.key
 
 from app.Sprite import Sprite
-from app.Sprite.entity import Player, Pokemon, Entity
+from app.Sprite.entity import Player, Pokemon
 from lib import Container
 from lib.loaders import LoaderInterface
 from lib.views import TiledView
@@ -39,8 +39,6 @@ class MapView(TiledView, ABC):
             self.generate_pokemon()
             self.player.obstacles = self.obstacles
             self.group.add(self.player)
-            for pokemon in self.pokemons:
-                self.group.add(pokemon)
             self.entities = self.group.sprites()
 
     def update(self):
@@ -58,10 +56,13 @@ class MapView(TiledView, ABC):
         if Container.exists(Sprite.__name__):
             self.group.center(self.player.rect.center)
             self.group.draw(self.screen)
-            self.player.show_inventory()
             for pokemon in self.pokemons:
                 if pokemon not in self.player.inventory and pokemon not in self.group:
                     self.group.add(pokemon)
+            if self.player.inventory_shown:
+                self.player.show_inventory()
+            else:
+                self.player.inventory_menu.set_alpha(0)
         else:
             self.map_layer.center((71 * 16, 84 * 16))
             self.map_layer.draw(self.screen, self.screen.get_rect())
@@ -69,13 +70,14 @@ class MapView(TiledView, ABC):
 
     def generate_pokemon(self):
         self.pokemons = []
-        pokemon_choice = random.randint(1, 153), random.randint(1, 153)
-        for i in range(5):
+        #pokemon_choice = random.randint(1, 153), random.randint(1, 153)
+        for i in range(153):
             spawn_zone = random.choice(self.spawn_points)
             spawn_coords = random.randint(spawn_zone.x, spawn_zone.x + spawn_zone.width) // 16, random.randint(spawn_zone.y,
                                                                                                          spawn_zone.y + spawn_zone.height) // 16
             pokemon = Container.get(LoaderInterface.__name__).load_from_index(Pokemon, i, x=spawn_coords[0], y=spawn_coords[1])
             if pokemon is not None:
                 self.pokemons.append(pokemon)
+        self.pokemons = random.sample(self.pokemons, 8)
 
 

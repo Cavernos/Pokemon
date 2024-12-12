@@ -18,7 +18,7 @@ class MapAction:
         EventListener.add_event_listener(pygame.USEREVENT + 1, self.on_sprite_collide)
         self.current_view.accept_button.set_action(self.return_to_main_menu)
         self.current_view.discard_button.set_action(self.escape_menu)
-        self.escape_press_counter = 0
+        self.escape_menu_shown = 0
         self.h_press_counter = 0
         if Container.exists(Sprite.__name__):
             self.player = self.current_view.player
@@ -33,17 +33,20 @@ class MapAction:
         self.view_handler.set_view(HomeView)
 
     def escape_menu(self, button):
-        self.escape_press_counter += 1
-        if self.escape_press_counter > 1:
-            self.escape_press_counter = 0
-        if self.escape_press_counter == 1:
+
+
+        if not self.escape_menu_shown:
+            self.escape_menu_shown = True
             if Container.exists(Sprite.__name__):
                 self.player.playable = False
             self.current_view.quit_menu.set_alpha(255)
+            return
         else:
+            self.escape_menu_shown = False
             if Container.exists(Sprite.__name__):
                 self.player.playable = True
             self.current_view.quit_menu.set_alpha(0)
+            return
 
     def show_hitbox(self, event):
         for entity in self.current_view.entities:

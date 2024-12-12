@@ -36,6 +36,7 @@ class Menu(Widget):
     def add_widget(self, widget):
         if isinstance(widget, Widget) and widget not in self.widgets:
             self.widgets.append(widget)
+            widget.set_pos((widget.x + self.x, widget.y + self.y))
         else:
             del widget
     def remove_widget(self, widget):
