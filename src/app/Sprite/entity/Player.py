@@ -47,6 +47,7 @@ class Player(Entity):
         for pokemon in self.inventory:
             if pokemon.index == item.index:
                 self.inventory.remove(pokemon)
+                pokemon.set_pos((self.rect.x + self.direction[0] * self.width, self.rect.y + self.direction[1] * self.height))
         self.inventory_menu.remove_widget(item)
         del item
 

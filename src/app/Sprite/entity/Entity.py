@@ -26,6 +26,7 @@ class Entity(pygame.sprite.Sprite):
         self.obstacles = []
         self.playable = False
         self.velocity = 1
+        self.direction = ()
 
     def move_left(self, x):
         """
@@ -39,6 +40,7 @@ class Entity(pygame.sprite.Sprite):
         self.image = self.loaded_image.subsurface(
             (self.play_anim(0) * self.width, self.height, self.width, self.height)
         )
+        self.direction = (-1, 0)
         self.rect.x -= (x * self.velocity)
 
     def move_right(self, x):
@@ -50,6 +52,7 @@ class Entity(pygame.sprite.Sprite):
         Returns:
 
         """
+        self.direction = (1, 0)
         self.image = self.loaded_image.subsurface(
             (self.play_anim(1) * self.width, 2 * self.height, self.width, self.height))
         self.rect.x += (x * self.velocity)
@@ -63,6 +66,7 @@ class Entity(pygame.sprite.Sprite):
         Returns:
 
         """
+        self.direction = (0, 1)
         self.image = self.loaded_image.subsurface(
             (self.play_anim(2) * self.width, 0 * self.height, self.width, self.height))
         self.rect.y += (y * self.velocity)
@@ -76,6 +80,7 @@ class Entity(pygame.sprite.Sprite):
         Returns:
 
         """
+        self.direction = (0, -1)
         self.image = self.loaded_image.subsurface(
             (self.play_anim(3) * self.width, 3 * self.height, self.width, self.height))
         self.rect.y -= (y * self.velocity)
@@ -122,5 +127,9 @@ class Entity(pygame.sprite.Sprite):
         pygame.draw.rect(self.image, (0, 0, 0),
                                      (0,0,
                                       self.rect.width, self.rect.height), width=1)
+
+    def set_pos(self, pos):
+        self.x, self.y = pos
+        self.rect.x, self.rect.y = pos
 
 
