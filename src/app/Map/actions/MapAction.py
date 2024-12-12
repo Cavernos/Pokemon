@@ -3,6 +3,7 @@ import pygame.time
 
 from app.Map.actions.GeneralAction import GeneralAction
 from app.Map.views import HouseView, MapView
+from app.Map.views.PokemonCenterView import PokemonCenterView
 from app.Sprite import Sprite
 from app.Sprite.actions import PlayerAction
 from lib import Container
@@ -23,6 +24,7 @@ class MapAction(GeneralAction):
         self.h_press_counter = 0
         if Container.exists(Sprite.__name__):
             self.player = self.current_view.player
+            self.pokemons = self.current_view.pokemons
             PlayerAction()(self.player)
 
 
@@ -37,6 +39,10 @@ class MapAction(GeneralAction):
     def on_house_door_collide(self, event):
         if isinstance(self.current_view, MapView):
             Container.set('player', self.player)
-            self.view_handler.set_view(HouseView)
+            Container.set('pokemon', self.pokemons)
+            if 'house' in event.house:
+                self.view_handler.set_view(HouseView)
+            else:
+                self.view_handler.set_view(PokemonCenterView)
 
 

@@ -11,3 +11,4 @@ class Map(Module):
         super().__init__()
         self.map_action = MapAction()
         self.house_action = HouseAction()
+        self.pokemon_center_action = HouseAction()

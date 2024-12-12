@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+from app.MainMenuModule.views import HomeView
 from app.Map.views import MapView
 from lib.Container import factory
 from lib.events import EventListener

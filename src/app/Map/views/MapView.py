@@ -29,15 +29,24 @@ class MapView(TiledView, ABC):
 
         for objs in self.tmx_data.objectgroups:
             self.objects[objs.name] = []
-            for obj in objs:
-                self.objects[objs.name].append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+            if objs.name == 'tp':
+                self.objects[objs.name] = {}
 
+            for obj in objs:
+                rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+                if objs.name == 'tp':
+                    self.objects[objs.name][obj.name] = rect
+                else:
+                    self.objects[objs.name].append(rect)
 
         if Container.exists(Sprite.__name__):
             self.player = Container.get('player') if isinstance(Container.get('player'), Player) else Player(71, 84)
             Container.delete('player')
-            self.pokemons = []
-            self.generate_pokemon()
+            if Container.get('pokemon') is not None:
+                self.pokemons = Container.get('pokemon')
+            else:
+                self.pokemons = []
+                self.generate_pokemon()
             self.player.obstacles = self.objects['collision']
             self.group.add(self.player)
             self.entities = self.group.sprites()
@@ -50,9 +59,12 @@ class MapView(TiledView, ABC):
                 pygame.event.post(pygame.event.Event(Event.COLLIDE,
                                                      pos=(self.player.rect.x, self.player.rect.y)
                                                      , pokemon=self.pokemons[self.player.rect.collidelist(self.pokemons)]))
-            if self.player.rect.collidelist(self.objects['tp']) != -1:
+            tp_list = list(self.objects['tp'].values())
+            if self.player.feet.collidelist(tp_list) != -1:
+                collided_house = tp_list[self.player.feet.collidelist(list(self.objects['tp'].values()))]
+                print('collide')
                 pygame.event.post(pygame.event.Event(Event.TP, pos=(self.player.rect.x, self.player.rect.y),
-                                                        house=self.objects['tp'][self.player.rect.collidelist(self.objects['tp'])]))
+                                                    house=list(self.objects['tp'].keys())[tp_list.index(collided_house)]))
 
         if True in pygame.key.get_pressed():
             pygame.event.post(pygame.event.Event(Event.KEY_PRESS, key=pygame.key.get_pressed()))

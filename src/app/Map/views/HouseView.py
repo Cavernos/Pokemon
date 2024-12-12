@@ -15,7 +15,7 @@ class HouseView(TiledView, ABC):
 
     def __init__(self, screen):
             super().__init__(screen)
-            self.map_layer.zoom = 2
+            self.map_layer.zoom = 0.5
             self.objects = {}
 
             self.accept_button = Button(self.screen, 0, 70, 30, 30, name='yes')
@@ -38,7 +38,7 @@ class HouseView(TiledView, ABC):
                 self.player = Container.get('player') if Container.get('player') is not None else Player(144, 128)
                 self.old_player_pos = (self.player.rect.x, self.player.rect.y + 1)
                 Container.delete('player')
-                self.player.set_pos((144, 128))
+                self.player.set_pos((148, 128))
                 self.player.obstacles = self.objects['collision']
                 self.group.add(self.player)
 
