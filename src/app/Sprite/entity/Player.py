@@ -33,7 +33,7 @@ class Player(Entity):
         func_name = args[0]
         old_position = [self.rect.x, self.rect.y].copy()
         if hasattr(self, func_name):
-                getattr(self, func_name)(1)
+            getattr(self, func_name)(1)
         self.position = [self.rect.x, self.rect.y].copy()
         self.feet.midbottom = self.rect.midbottom
         if self.feet.collidelist(self.obstacles) != -1:
@@ -46,12 +46,12 @@ class Player(Entity):
         if item not in self.inventory and len(self.inventory) < 6:
             self.inventory.append(item)
 
-
     def remove_from_inventory(self, item):
         for pokemon in self.inventory:
             if pokemon.index == item.index:
                 self.inventory.remove(pokemon)
-                pokemon.set_pos((self.rect.x + self.direction[0] * self.width, self.rect.y + self.direction[1] * self.height))
+                pokemon.set_pos(
+                    (self.rect.x + self.direction[0] * self.width, self.rect.y + self.direction[1] * self.height))
         self.inventory_menu.remove_widget(item)
         del item
 
@@ -63,7 +63,8 @@ class Player(Entity):
                 self.inventory_menu.widgets.clear()
                 for i in range(len(self.inventory)):
                     pokemon = self.inventory[i]
-                    button = Button(screen, pokemon.width*i, 0, pokemon.width, pokemon.height, image=pokemon.back_image, index=pokemon.index)
+                    button = Button(screen, pokemon.width * i, 0, pokemon.width, pokemon.height,
+                                    image=pokemon.back_image, index=pokemon.index)
                     button.set_action(self.remove_from_inventory)
                     self.inventory_menu.add_widget(button)
                 if len(self.inventory) == 6:

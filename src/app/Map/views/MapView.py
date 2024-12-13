@@ -3,9 +3,11 @@ from abc import ABC
 
 import pygame
 
+from app.Map.animations import TutorialScene
 from app.Sprite import Sprite
 from app.Sprite.entity import Player, Pokemon
 from lib import Container
+from lib.animations import CutSceneManager
 from lib.events import Event
 from lib.loaders import LoaderInterface
 from lib.views import TiledView
@@ -50,6 +52,7 @@ class MapView(TiledView, ABC):
             self.player.obstacles = self.objects['collision']
             self.group.add(self.player)
             self.entities = self.group.sprites()
+            self.tutorial = TutorialScene(self.player, random.sample(self.pokemons, 1)[0])
 
     def update(self):
         if Container.exists(Sprite.__name__):
@@ -65,6 +68,7 @@ class MapView(TiledView, ABC):
                 pygame.event.post(pygame.event.Event(Event.TP, pos=(self.player.rect.x, self.player.rect.y),
                                                     house=list(self.objects['tp'].keys())[tp_list.index(collided_house)]))
 
+        pygame.event.post(pygame.event.Event(Event.CUT_SCENE_START, cut_scene=self.tutorial))
         if True in pygame.key.get_pressed():
             pygame.event.post(pygame.event.Event(Event.KEY_PRESS, key=pygame.key.get_pressed()))
 
@@ -85,7 +89,6 @@ class MapView(TiledView, ABC):
         self.quit_menu.render()
 
     def generate_pokemon(self):
-        self.pokemons = []
         #pokemon_choice = random.randint(1, 153), random.randint(1, 153)
         for i in range(153):
             spawn_zone = random.choice(self.objects['spawn_pokemon'])

@@ -3,6 +3,7 @@ import re
 import pygame.display
 
 from lib import Container
+from lib.animations import CutSceneManager
 
 
 class ViewHandler:
@@ -24,10 +25,12 @@ class ViewHandler:
     def update(self):
         if self.curent_view is not None:
             self.curent_view.update()
+            Container.get(CutSceneManager.__name__).update()
 
     def render(self):
         if self.curent_view is not None:
             self.curent_view.render()
+            Container.get(CutSceneManager.__name__).render()
 
     def get_view(self):
         return self.curent_view
