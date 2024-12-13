@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 
 from app.MainMenuModule.views import HomeView
-from app.Map.views import MapView
 from lib.Container import factory
 from lib.animations import CutSceneManager
 from lib.events import EventListener
@@ -21,7 +20,7 @@ config = {
     EventListener.__name__: EventListener(),
     CutSceneManager.__name__: CutSceneManager(),
     "views": {},
-    "FIRST_VIEW": MapView
+    "FIRST_VIEW": HomeView
 }
 
 
