@@ -7,7 +7,6 @@ from app.Map.animations import TutorialScene
 from app.Sprite import Sprite
 from app.Sprite.entity import Player, Pokemon
 from lib import Container
-from lib.animations import CutSceneManager
 from lib.events import Event
 from lib.loaders import LoaderInterface
 from lib.views import TiledView

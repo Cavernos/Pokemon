@@ -8,7 +8,6 @@ from lib.widgets.Label import Label
 class TutorialScene:
     def __init__(self, player, start_pokemon):
         self.player = player
-        self.player.playable = False
         self.name = 'tutorial'
         self.step = 0
         inputs_dict = Container.get('inputs')['player']
@@ -24,6 +23,7 @@ class TutorialScene:
         self.running = True
 
     def update(self):
+        self.player.playable = False
         if self.step == 0:
             if int(self.text_counter) < len(self.dialogue[2]):
                 self.text_counter += 0.4
@@ -45,7 +45,7 @@ class TutorialScene:
                 self.player.move_up(1)
                 self.text_counter = 0
             else:
-                self.step = 4
+                #self.step = 4
                 self.player.playable = True
                 self.menu.set_alpha(0)
                 self.running = False
