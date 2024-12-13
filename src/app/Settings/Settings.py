@@ -9,4 +9,4 @@ class Settings(Module):
 
     def __init__(self):
         super().__init__()
-        self.action = SettingsActions()
+        self.settings_action = SettingsActions()

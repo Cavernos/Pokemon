@@ -93,6 +93,14 @@
                 "y": 80.15989340439707
             }
         },
+        "maps/pokemonstore.tmx": {
+            "scale": 8,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 112.125,
+                "y": 116.625
+            }
+        },
         "maps/tileset/home_back.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 1
