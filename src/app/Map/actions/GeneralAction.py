@@ -19,12 +19,14 @@ class GeneralAction:
             self.escape_menu_shown = True
             if Container.exists(Sprite.__name__):
                 self.player.playable = False
+                self.player.inventory_menu.set_alpha(255)
             self.current_view.quit_menu.set_alpha(255)
             return
         else:
             self.escape_menu_shown = False
             if Container.exists(Sprite.__name__):
                 self.player.playable = True
+                self.player.inventory_menu.set_alpha(0)
             self.current_view.quit_menu.set_alpha(0)
             return
 

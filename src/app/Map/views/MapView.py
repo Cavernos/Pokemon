@@ -41,7 +41,7 @@ class MapView(TiledView, ABC):
                     self.objects[objs.name].append(rect)
 
         if Container.exists(Sprite.__name__):
-            self.player = Container.get('player') if isinstance(Container.get('player'), Player) else Player(71, 84)
+            self.player = Container.get('player') if isinstance(Container.get('player'), Player) else Player(70.5, 83.5)
             Container.delete('player')
             if Container.get('pokemon') is not None:
                 self.pokemons = Container.get('pokemon')
@@ -51,7 +51,7 @@ class MapView(TiledView, ABC):
             self.player.obstacles = self.objects['collision']
             self.group.add(self.player)
             self.entities = self.group.sprites()
-            self.tutorial = TutorialScene(self.player, random.sample(self.pokemons, 1)[0])
+            self.tutorial = TutorialScene(self.player,  random.sample(self.pokemons, 1)[0])
 
     def update(self):
         if Container.exists(Sprite.__name__):
