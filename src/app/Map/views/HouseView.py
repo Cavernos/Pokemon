@@ -2,6 +2,7 @@ from abc import ABC
 
 import pygame
 
+from app.Map.animations import HouseScene
 from app.Sprite import Sprite
 from app.Sprite.entity import Player
 from lib import Container

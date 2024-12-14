@@ -18,22 +18,22 @@ class TutorialScene:
         for key, value in inputs_dict.items():
             iteration = 2+3*counter
             if iteration == 14 and not already_played:
-                self.dialogue[iteration-3] = self.dialogue[iteration-3] + f' and {pygame.key.name(key)} to {' '.join(value.split("_"))}'
+                self.dialogue[iteration-3] = self.dialogue[iteration-3] + f' and {pygame.key.name(key).upper()} to {' '.join(value.split("_"))}'
                 already_played = True
                 counter -=1
             else:
-                self.dialogue[iteration] = f'Press {pygame.key.name(key)} to {' '.join(value.split("_"))}'
+                self.dialogue[iteration] = f'Press {pygame.key.name(key).upper()} to {' '.join(value.split("_"))}'
             counter += 1
-        self.dialogue[1] = "Hello and welcome in pokemon's world, in this tutorial, we will learn\nhow to play this game ?"
-        self.dialogue[4] = "Ooh ! un pokemon abandonné, et si nous l'attrapions pour le sauver"
-        self.dialogue[7] = "Parfait ! Maintenant, nous allons essayer de nous déplacer vers le bas"
-        self.dialogue[10] = "Essayons de remonter en courant cette fois-ci"
-        self.dialogue[13] = "Super ! Maintenant essayons de tourner à gauche"
-        self.dialogue[16] = "Ce tutoriel est terminé ! Nous espérons qu'il vous a été utile"
-        self.dialogue[17] = "Essayer donc maintenant de remplir votre inventaire de pokemons"
+        self.dialogue[1] = "Hello and welcome in pokemon's world, in this tutorial, we will learn\nhow to play this game"
+        self.dialogue[4] = "Ooh ! an abandoned pokemon, what if we caught it to save it ?"
+        self.dialogue[7] = "Perfect ! Now, we will try to move down"
+        self.dialogue[10] = "Let's try to run up this time"
+        self.dialogue[13] = "Wonderful ! Now let's turn left"
+        self.dialogue[16] = "This tutorial is completed ! We hope it was useful to you"
+        self.dialogue[17] = "Good luck to fill in your inventory !!!"
         self.text_counter = 0
         screen = pygame.display.get_surface()
-        self.text_label = Label(screen, 0, 0, 0, 30, name='', color=(255,255, 255))
+        self.text_label = Label(screen, 10, 0, 0, 30, name='', color=(255,255, 255))
         self.menu = Menu(screen, 0, 0, screen.get_width(), self.text_label.height, self.text_label)
         self.running = True
 

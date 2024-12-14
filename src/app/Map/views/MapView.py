@@ -3,7 +3,7 @@ from abc import ABC
 
 import pygame
 
-from app.Map.animations import TutorialScene
+from app.Map.animations import TutorialScene, HouseScene
 from app.Sprite import Sprite
 from app.Sprite.entity import Player, Pokemon
 from lib import Container
@@ -63,11 +63,12 @@ class MapView(TiledView, ABC):
                                                      , pokemon=self.pokemons[self.player.rect.collidelist(self.pokemons)]))
             tp_list = list(self.objects['tp'].values())
             if self.player.feet.collidelist(tp_list) != -1:
+                pygame.event.post(pygame.event.Event(Event.CUT_SCENE_START, cut_scene=HouseScene(), replayable=True))
                 collided_house = tp_list[self.player.feet.collidelist(list(self.objects['tp'].values()))]
                 pygame.event.post(pygame.event.Event(Event.TP, pos=(self.player.rect.x, self.player.rect.y),
                                                     house=list(self.objects['tp'].keys())[tp_list.index(collided_house)]))
 
-        pygame.event.post(pygame.event.Event(Event.CUT_SCENE_START, cut_scene=self.tutorial))
+        pygame.event.post(pygame.event.Event(Event.CUT_SCENE_START, cut_scene=self.tutorial, replayable=False))
         if True in pygame.key.get_pressed():
             pygame.event.post(pygame.event.Event(Event.KEY_PRESS, key=pygame.key.get_pressed()))
 

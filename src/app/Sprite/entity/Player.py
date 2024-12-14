@@ -68,5 +68,5 @@ class Player(Entity):
                     self.inventory_menu.add_widget(button)
             if len(self.inventory) == 6:
                 self.inventory_menu.add_widget(
-                    Label(pygame.display.get_surface(), 0, 32, 0, 25, name="Inventaire plein", color="#ffffff"))
+                    Label(pygame.display.get_surface(), 0, 32, 0, 25, name="Inventory full", color="#ffffff"))
         self.inventory_menu.render()

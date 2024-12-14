@@ -1008,9 +1008,9 @@
   <object id="79" x="1334.63" y="814.125" width="0.125" height="0.125"/>
  </objectgroup>
  <objectgroup id="14" name="spawn_pokemon">
-  <object id="46" x="1167.42" y="1119.75" width="176" height="96.5833"/>
-  <object id="48" x="1167.42" y="1039.92" width="176.167" height="32"/>
-  <object id="49" x="1168.25" y="959.333" width="175.667" height="32.75"/>
-  <object id="50" x="1168.08" y="895.917" width="176.25" height="15.9167"/>
+  <object id="46" x="1167.42" y="1119.75" width="160.333" height="96.5833"/>
+  <object id="48" x="1184.09" y="1039.92" width="143.834" height="32"/>
+  <object id="49" x="1184.25" y="959.333" width="143" height="32.75"/>
+  <object id="50" x="1184.75" y="895.917" width="142.917" height="15.9167"/>
  </objectgroup>
 </map>

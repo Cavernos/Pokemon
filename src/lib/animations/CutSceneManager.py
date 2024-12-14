@@ -11,7 +11,8 @@ class CutSceneManager:
     def start(self, event):
         if event.cut_scene.name not in self.cut_scenes_complete:
             self.cut_scene = event.cut_scene
-            self.cut_scenes_complete.append(self.cut_scene.name)
+            if not event.replayable:
+                self.cut_scenes_complete.append(self.cut_scene.name)
             self.cut_scene_running = True
 
     def end(self):
