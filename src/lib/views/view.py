@@ -39,7 +39,7 @@ class TiledView(View):
     def __init__(self, screen):
         super().__init__(screen)
         try:
-            self.tmx_data = pytmx.load_pygame(f"{Container.get("APP")}\\assets\\maps\\"
+            self.tmx_data = pytmx.load_pygame(f"{Container.get("ASSETS")}\\maps\\"
                                               f"{self.__class__.__name__.split('View')[0].lower()}.tmx")
         except FileNotFoundError as e:
             self.tmx_data = None
