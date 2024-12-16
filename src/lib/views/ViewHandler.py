@@ -1,6 +1,9 @@
+import re
+
 import pygame.display
 
 from lib import Container
+from lib.animations import CutSceneManager
 
 
 class ViewHandler:
@@ -12,19 +15,22 @@ class ViewHandler:
         if pygame.display.get_init():
             if Container.exists(view.__name__):
                 self.curent_view = view(pygame.display.get_surface())
-                if hasattr(Container.get(view.__module__.split('.')[1]), "action"):
-                    if callable(Container.get(view.__module__.split('.')[1]).action):
-                        Container.get(view.__module__.split('.')[1]).action()
+                attr_name = f'{'_'.join(re.findall('.[^A-Z]*', view.__name__)[:-1]).lower()}_action'
+                if hasattr(Container.get(view.__module__.split('.')[1]), attr_name):
+                    if callable(getattr(Container.get(view.__module__.split('.')[1]), attr_name)):
+                        getattr(Container.get(view.__module__.split('.')[1]), attr_name)()
             else:
                 self.curent_view = None
 
     def update(self):
         if self.curent_view is not None:
             self.curent_view.update()
+            Container.get(CutSceneManager.__name__).update()
 
     def render(self):
         if self.curent_view is not None:
             self.curent_view.render()
+            Container.get(CutSceneManager.__name__).render()
 
     def get_view(self):
         return self.curent_view

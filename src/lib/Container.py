@@ -46,6 +46,11 @@ class Container:
                     return True
         return False
 
+    @classmethod
+    def delete(cls, param):
+        if param in cls.config.keys():
+            del cls.config[param]
+
 
 def factory(factory: object) -> any:
     if callable(factory):

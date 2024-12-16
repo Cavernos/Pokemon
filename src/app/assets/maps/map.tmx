@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="16" nextobjectid="66">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="16" nextobjectid="81">
  <tileset firstgid="1" source="tileset/tileset4g.tsx"/>
  <tileset firstgid="21001" source="tileset/interieur1.tsx"/>
  <layer id="1" name="grass" width="150" height="100">
@@ -965,55 +965,52 @@
   <object id="26" type="collision" x="1432" y="561.333" width="6.66667" height="92.6667"/>
   <object id="27" type="collision" x="1393.75" y="592" width="24.5833" height="25"/>
   <object id="28" type="collision" x="1089.42" y="752.417" width="24.25" height="25"/>
-  <object id="29" type="collision" x="1138.67" y="608" width="75" height="48.6212"/>
-  <object id="30" type="collision" x="1300.67" y="608.667" width="64.6667" height="47.5757"/>
-  <object id="31" type="collision" x="1120.67" y="768.667" width="77.6667" height="47.5455"/>
-  <object id="32" type="collision" x="1315.67" y="768.333" width="70" height="47.9773"/>
+  <object id="29" type="collision" x="1138.67" y="608" width="75" height="31.1212"/>
+  <object id="30" type="collision" x="1300.67" y="608.667" width="64.6667" height="28.8484"/>
+  <object id="31" type="collision" x="1120.67" y="768.667" width="77.6667" height="29.8788"/>
+  <object id="32" type="collision" x="1315.67" y="768.333" width="70" height="29.4773"/>
   <object id="33" type="collision" x="1216.05" y="791" width="15.8333" height="20.9167"/>
   <object id="34" type="collision" x="1279.92" y="630.875" width="15.9167" height="21.375"/>
-  <object id="35" type="collision" x="1127" y="1424" width="112.333" height="48.0378"/>
-  <object id="36" type="collision" x="1314.33" y="1424" width="75.3333" height="47.9924"/>
-  <object id="37" type="collision" x="1315.33" y="1296" width="71" height="47.8181"/>
-  <object id="38" type="collision" x="1123.33" y="1296.66" width="70.6667" height="47.4773"/>
+  <object id="35" type="collision" x="1127" y="1424" width="113.083" height="26.6628"/>
+  <object id="36" type="collision" x="1345.58" y="1424" width="44.0833" height="47.9924"/>
+  <object id="37" type="collision" x="1316.2" y="1296" width="70.125" height="29.6931"/>
+  <object id="38" type="collision" x="1124.06" y="1296.66" width="69.9394" height="28.8409"/>
   <object id="39" type="collision" x="1202.67" y="1322.85" width="10.6667" height="19.8182"/>
   <object id="41" x="1072" y="1232.5" width="6.5" height="303"/>
   <object id="43" x="1431.5" y="1233.5" width="6.5" height="302"/>
   <object id="44" type="collision" x="1218.88" y="641.542" width="10.125" height="13.4583"/>
+  <object id="51" x="1316.74" y="1324.77" width="10" height="19.125"/>
+  <object id="52" x="1345.38" y="1325.63" width="36.875" height="18.125"/>
+  <object id="53" x="1315.25" y="1424" width="30.125" height="31"/>
+  <object id="54" x="1317.38" y="1455.25" width="9.5" height="16.25"/>
+  <object id="55" x="1127.88" y="1450.63" width="54.625" height="21"/>
+  <object id="56" x="1201" y="1450.63" width="38" height="21.5"/>
+  <object id="57" x="1152.82" y="1325.64" width="37.0909" height="18.3636"/>
+  <object id="58" x="1127.91" y="1325.82" width="7" height="18.0909"/>
+  <object id="62" x="1169.27" y="798" width="29" height="18.0909"/>
+  <object id="63" x="1120.64" y="796.818" width="29.9091" height="19.2727"/>
+  <object id="68" x="1315.64" y="797.636" width="11.1818" height="18.0909"/>
+  <object id="69" x="1345.36" y="797.818" width="36.6364" height="18.1818"/>
+  <object id="70" x="1329.36" y="637.636" width="35.6364" height="19.0909"/>
+  <object id="71" x="1301" y="637.727" width="9.81818" height="18.0909"/>
+  <object id="74" x="1169.13" y="639.217" width="40.8696" height="16.8261"/>
+  <object id="75" x="1140.04" y="639.261" width="10.913" height="16.8261"/>
  </objectgroup>
  <objectgroup id="13" name="tp">
-  <object id="51" name="map_tp_house2_ext_in" x="1151.75" y="656.75" width="16" height="1.5"/>
-  <object id="52" name="map_tp_house2_ext_in" x="1327.5" y="817.167" width="16" height="1.5"/>
-  <object id="53" name="map_tp_pokemon_center_ext_in" x="1151.67" y="816.583" width="16" height="1.5"/>
-  <object id="54" name="map_tp_house1_ext_in" x="1136" y="1344.58" width="16" height="1.5"/>
-  <object id="55" name="map_tp_house2_ext_in" x="1328" y="1344.58" width="16" height="1.5"/>
-  <object id="56" name="map_tp_house2_ext_in" x="1328" y="1472.58" width="16" height="1.5"/>
-  <object id="58" name="map_tp_house1_in_ext" x="1139.67" y="1359.67">
-   <point/>
-  </object>
-  <object id="59" name="map_tp_house2_in_ext" x="1332" y="1360">
-   <point/>
-  </object>
-  <object id="60" name="map_tp_house2_in_ext" x="1331.33" y="1487.67">
-   <point/>
-  </object>
-  <object id="61" name="map_tp_house2_in_ext" x="1332" y="831.667">
-   <point/>
-  </object>
-  <object id="62" name="map_tp_pokemon_center_in_ext" x="1155.67" y="832">
-   <point/>
-  </object>
-  <object id="63" name="map_tp_pokemon_store_ext_in" x="1311.67" y="657.25" width="16" height="1.5"/>
-  <object id="64" name="map_tp_pokemon_store_in_ext" x="1315.33" y="671.667">
-   <point/>
-  </object>
-  <object id="65" name="map_tp_house2_in_ext" x="1156" y="671.333">
-   <point/>
-  </object>
+  <object id="60" name="house3" x="1327.98" y="1325.69" width="16.6108" height="13.4943"/>
+  <object id="64" name="pokemon_center" x="1151.23" y="798.478" width="17.3152" height="6.65613"/>
+  <object id="65" name="house6" x="1327.33" y="1455.13" width="17.5136" height="14.9205"/>
+  <object id="66" name="house5" x="1183.75" y="1450.81" width="16.4375" height="18.1534"/>
+  <object id="67" name="house4" x="1133.86" y="1325.94" width="19.4545" height="7.67047"/>
+  <object id="76" name="house1" x="1151.04" y="639.408" width="17.9565" height="10.0934"/>
+  <object id="77" name="pokemon_store" x="1310.88" y="637.813" width="18.25" height="14.6875"/>
+  <object id="78" name="house2" x="1326.91" y="798.522" width="18.3043" height="14.1848"/>
+  <object id="79" x="1334.63" y="814.125" width="0.125" height="0.125"/>
  </objectgroup>
  <objectgroup id="14" name="spawn_pokemon">
-  <object id="46" x="1167.42" y="1119.75" width="176" height="96.5833"/>
-  <object id="48" x="1167.42" y="1039.92" width="176.167" height="32"/>
-  <object id="49" x="1168.25" y="959.333" width="175.667" height="32.75"/>
-  <object id="50" x="1168.08" y="895.917" width="176.25" height="15.9167"/>
+  <object id="46" x="1167.42" y="1119.75" width="160.333" height="96.5833"/>
+  <object id="48" x="1184.09" y="1039.92" width="143.834" height="32"/>
+  <object id="49" x="1184.25" y="959.333" width="143" height="32.75"/>
+  <object id="50" x="1184.75" y="895.917" width="142.917" height="15.9167"/>
  </objectgroup>
 </map>

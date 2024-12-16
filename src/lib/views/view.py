@@ -6,7 +6,7 @@ import pyscroll
 import pytmx
 
 from lib import Container
-from lib.events import EventListener
+from lib.events import EventListener, Event
 
 
 class View:
@@ -27,6 +27,9 @@ class View:
             EventListener.remove_event_listener(pygame.MOUSEMOTION, button.on_hover)
             EventListener.remove_event_listener(pygame.MOUSEBUTTONDOWN, button.on_click)
         EventListener.remove_event_listener(pygame.KEYDOWN)
+        EventListener.remove_event_listener(Event.TP)
+        EventListener.remove_event_listener(Event.COLLIDE)
+        EventListener.remove_event_listener(Event.KEY_PRESS)
         pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
@@ -36,7 +39,7 @@ class TiledView(View):
     def __init__(self, screen):
         super().__init__(screen)
         try:
-            self.tmx_data = pytmx.load_pygame(f"{Container.get("APP")}\\assets\\maps\\"
+            self.tmx_data = pytmx.load_pygame(f"{Container.get("ASSETS")}\\maps\\"
                                               f"{self.__class__.__name__.split('View')[0].lower()}.tmx")
         except FileNotFoundError as e:
             self.tmx_data = None
@@ -57,3 +60,6 @@ class TiledView(View):
             super().render()
         else:
             self.group.draw(self.screen)
+
+    def __del__(self):
+        super().__del__()

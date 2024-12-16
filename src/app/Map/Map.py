@@ -1,6 +1,6 @@
 import os
 
-from app.Map.actions import MapAction
+from app.Map.actions import MapAction, HouseAction
 from lib import Module
 
 
@@ -9,4 +9,7 @@ class Map(Module):
 
     def __init__(self):
         super().__init__()
-        self.action = MapAction()
+        self.map_action = MapAction()
+        self.house_action = HouseAction()
+        self.pokemon_center_action = HouseAction()
+        self.pokemon_store_action = HouseAction()

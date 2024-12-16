@@ -7,6 +7,7 @@ class Menu(Widget):
     def __init__(self, screen, x, y, width, height, *widgets, **kwargs):
         super().__init__(screen, x, y, width, height, **kwargs)
         self.background = pygame.surface.Surface((width, height))
+        self.rect = self.background.get_rect()
         self.widgets = []
         for widget in widgets:
             if isinstance(widget, Widget):
@@ -19,6 +20,14 @@ class Menu(Widget):
         for widget in self.widgets:
             if isinstance(widget, Widget):
                 widget.render()
+
+    def set_width(self, width):
+        self.rect.width = width
+        self.background = pygame.transform.smoothscale(self.background, self.rect.size)
+
+    def set_height(self, height):
+        self.rect.height = height
+        self.background = pygame.transform.smoothscale(self.background, self.rect.size)
 
     def set_alpha(self, value):
         self.background.set_alpha(value)
@@ -36,6 +45,7 @@ class Menu(Widget):
     def add_widget(self, widget):
         if isinstance(widget, Widget) and widget not in self.widgets:
             self.widgets.append(widget)
+            widget.set_pos((widget.x + self.x, widget.y + self.y))
         else:
             del widget
     def remove_widget(self, widget):
