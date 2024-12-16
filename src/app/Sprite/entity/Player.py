@@ -21,7 +21,7 @@ class Player(Entity):
             (0, 0, self.width, self.height))  # Image qui apparait au lancement du jeu
         self.rect.size = self.width, self.height  # Boite de collision
         self.playable = True  # Jouable ou non jouable
-        self.feet = pygame.Rect(self.x, self.y, self.width - 10, self.height * 0.5)  # Collision avec les pied du joueur
+        self.feet = pygame.Rect(self.x, self.y, self.width - 10, self.height * 0.4)  # Collision avec les pied du joueur
         # inventaire du joueur
         self.inventory = []
         self.inventory_menu = Menu(pygame.display.get_surface(), 0, 0, 192, 62)
