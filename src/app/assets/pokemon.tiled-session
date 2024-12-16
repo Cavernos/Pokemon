@@ -5,8 +5,8 @@
     },
     "activeFile": "maps/pokemonstore.tmx",
     "expandedProjectPaths": [
-        ".",
-        "maps"
+        "maps",
+        "."
     ],
     "fileStates": {
         "maps/Capture d'écran 2024-05-24 103346.tsx": {
@@ -98,8 +98,8 @@
         },
         "maps/pokemonstore.tmx": {
             "expandedObjectLayers": [
-                7,
-                5
+                5,
+                7
             ],
             "scale": 5.5,
             "selectedLayer": 8,
